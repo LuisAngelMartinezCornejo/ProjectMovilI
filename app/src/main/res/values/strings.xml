@@ -17,4 +17,14 @@
     <string name="codigo">Código</string>
     <string name="buscarCodigo">Ingresa el código a buscar</string>
     <string name="viajeaCancelar">Viaje a cancelar:</string>
+    <string name="tituloConfirmacion">¡Prepara las maletas!</string>
+    <string name="confirmacionInfo">Esta es la confirmación de tu orden:</string>
+    <string name="idViaje">ID Viaje:</string>
+    <string name="destino">Destino:</string>
+    <string name="transporte">Transporte:</string>
+    <string name="fecha">Fecha:</string>
+    <string name="dias">Días:</string>
+    <string name="asientos">Asientos:</string>
+    <string name="reservacion">Reservación a nombre de:</string>
+    <string name="entendido">Entendido</string>
 </resources>
