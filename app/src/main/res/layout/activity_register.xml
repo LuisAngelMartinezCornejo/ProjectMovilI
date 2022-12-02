@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
+            android:textColor="@color/darkgray"
             android:textSize="35sp"
             android:text="@string/register_text"/>
         <TextView
@@ -34,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:text="@string/register_text_2"/>
 
