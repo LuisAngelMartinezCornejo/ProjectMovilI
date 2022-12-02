@@ -18,4 +18,15 @@
     <string name="checkBox_register">Acepto los Términos y Condiciones y la Política de Privacidad</string>
     <string name="text_register">¿Ya tienes cuenta?</string>
     <string name="login">Inicia Sesión</string>
+    <string name="copyright">Derechos reservados 2022</string>
+    <string name="principal">Inicio</string>
+    <string name="anadir_viaje">Nuevo viaje</string>
+    <string name="menu_cerrar_sesion">Cerrar sesión</string>
+    <string name="ver_viajes">Mis viajes</string>
+    <string name="perfil">Mi perfil</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Cerrar</string>
+    <string name="title_click">Titulo</string>
+    <string name="welcome_message">¡Hola Mauricio!</string>
+    <string name="text_menu">Encuentra el viaje para tu siguiente destino.</string>
 </resources>
