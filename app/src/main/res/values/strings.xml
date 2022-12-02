@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">ProyectoMovil</string>
+    <string name="saludoMiPerfil">¡Hola</string>
+    <string name="infoMiPerfil">Actualiza tu información con tus datos personales.</string>
+    <string name="infoEditarMiPerfil">Edita tu información con tus datos personales actuales.</string>
+    <string name="infoViajesComprados">Encuentra una lista con los viajes que has comprado.</string>
+    <string name="infoEditarViajesComprados">Escribe el código del viaje que deseas eliminar.</string>
+    <string name="tusDatos">Tus datos</string>
+    <string name="nombre">Nombre:</string>
+    <string name="correo">Correo:</string>
+    <string name="telefono">Teléfono:</string>
+    <string name="direccion">Dirección:</string>
+    <string name="btnEditarPerfil">Editar información</string>
+    <string name="btnGuardarPerfil">Guardar información</string>
+    <string name="tusViajes">Tus viajes</string>
+    <string name="btnCancelarViaje">Cancelar viaje</string>
+    <string name="codigo">Código</string>
+    <string name="buscarCodigo">Ingresa el código a buscar</string>
+    <string name="viajeaCancelar">Viaje a cancelar:</string>
 </resources>
