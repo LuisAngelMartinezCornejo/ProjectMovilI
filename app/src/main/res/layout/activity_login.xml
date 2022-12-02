@@ -34,22 +34,23 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edt_lada"
+            android:id="@+id/edt_lada_login"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_width="35dp"
-            android:layout_height="25dp"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
             android:hint="@string/lada"
+            android:padding="12dp"
+            android:textColorHint="@color/black"
             android:fontFamily="sans-serif-black"
-            android:background="@color/gray"
+            android:background="@drawable/fondo_redondo"
             />
 
         <EditText
-            android:id="@+id/edt_password"
+            android:id="@+id/edt_number_login"
             android:layout_marginTop="10dp"
             android:layout_marginStart="@dimen/margin_start"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:hint="@string/number"
             android:paddingStart="20dp"
             android:inputType="number"
@@ -59,11 +60,11 @@
             />
     </LinearLayout>
     <EditText
-        android:id="@+id/edt_number"
+        android:id="@+id/edt_password"
         android:layout_marginStart="@dimen/margin_start"
         android:layout_marginEnd="@dimen/margin_start"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:inputType="textPassword"
         android:hint="@string/password"
         android:paddingStart="20dp"
@@ -84,7 +85,6 @@
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_marginTop="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"
         android:layout_marginBottom="@dimen/margin"
         android:background="@drawable/btnredondo"
         android:layout_gravity="center"

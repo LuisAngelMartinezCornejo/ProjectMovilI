@@ -5,9 +5,11 @@
       <map>
         <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/drawable/borde_redondo.xml" value="0.1" />
         <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/drawable/btnredondo.xml" value="0.1" />
-        <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/drawable/fondo_redondo.xml" value="0.1" />
+        <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/layout/activity_login.xml" value="0.32717678100263853" />
         <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/layout/activity_menu_principal.xml" value="0.1" />
+        <entry key="..\:/Users/papem/AndroidStudioProjects/ProyectoMovil/app/src/main/res/layout/activity_register.xml" value="0.2" />
       </map>
     </option>
   </component>
