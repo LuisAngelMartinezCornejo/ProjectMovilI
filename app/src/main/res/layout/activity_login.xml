@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityLogin"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:textSize="35sp"
+        android:text="@string/text_begin"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="20sp"
+        android:text="@string/text_begin_2"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_start"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:paddingBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edt_lada"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_width="35dp"
+            android:layout_height="25dp"
+            android:hint="@string/lada"
+            android:fontFamily="sans-serif-black"
+            android:background="@color/gray"
+            />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="@string/number"
+            android:paddingStart="20dp"
+            android:inputType="number"
+            android:fontFamily="sans-serif"
+            android:background="@drawable/borde_redondo"
+
+            />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/edt_number"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_start"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:paddingStart="20dp"
+        android:fontFamily="sans-serif"
+        android:background="@drawable/borde_redondo"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:text="@string/checkBox" />
+    <Button
+        android:id="@+id/btn_accept"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:background="@drawable/btnredondo"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:text="@string/btnTextAccept"
+        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_start"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_1"
+            android:textSize="15sp"
+            android:textColor="@color/appcolor3"
+            android:fontFamily="sans-serif"
+            android:background="@color/gray"
+            />
+
+        <Button
+            android:id="@+id/btn_registro"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registrar"
+            android:inputType="text"
+            android:textColor="@color/appcolor3"
+            android:fontFamily="sans-serif"
+            android:background="@color/white_2"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

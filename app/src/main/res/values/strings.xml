@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ProyectoMovil</string>
+    <string name="text_begin">Inicia con tu teléfono celular</string>
+    <string name="text_begin_2">Por favor, ingresa tu número de celular y contraseña correctamente</string>
+    <string name="lada">+52</string>
+    <string name="number">33 1234 6578</string>
+    <string name="password">Contraseña</string>
+    <string name="checkBox">Mantener sesión iniciada</string>
+    <string name="btnTextAccept">Iniciar</string>
+    <string name="text_1">¿No tienes cuenta?</string>
+    <string name="registrar">Registrate</string>
 </resources>
