@@ -29,6 +29,15 @@
             android:name=".MiPerfil"
             android:exported="false" />
         <activity
+            android:name=".ActivityRegister"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityLogin"
+            android:exported="false" />
+        <activity
+            android:name=".MenuPrincipal"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

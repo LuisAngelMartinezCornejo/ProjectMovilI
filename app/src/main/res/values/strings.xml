@@ -27,4 +27,21 @@
     <string name="asientos">Asientos:</string>
     <string name="reservacion">Reservación a nombre de:</string>
     <string name="entendido">Entendido</string>
+    <string name="text_begin">Inicia con tu teléfono celular</string>
+    <string name="text_begin_2">Por favor, ingresa tu número de celular y contraseña correctamente</string>
+    <string name="lada">+52</string>
+    <string name="number">33 1234 6578</string>
+    <string name="password">Contraseña</string>
+    <string name="checkBox">Mantener sesión iniciada</string>
+    <string name="btnTextAccept">Iniciar</string>
+    <string name="text_1">¿No tienes cuenta?</string>
+    <string name="registrar">Registrate</string>
+    <string name="register_text">Bienvenido a</string>
+    <string name="app_name_1">TicketGO</string>
+    <string name="register_text_2">Crea una cuenta de forma fácil y sencilla</string>
+    <string name="name">Luis Angel Martinez</string>
+    <string name="name_text">Nombre</string>
+    <string name="checkBox_register">Acepto los Términos y Condiciones y la Política de Privacidad</string>
+    <string name="text_register">¿Ya tienes cuenta?</string>
+    <string name="login">Inicia Sesión</string>
 </resources>
