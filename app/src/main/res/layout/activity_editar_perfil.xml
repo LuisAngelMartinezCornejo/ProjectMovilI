@@ -115,6 +115,7 @@
         android:background="@drawable/edittextformat"
         android:ems="10"
         android:hint="editHint"
+        android:paddingStart="10dp"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -128,6 +129,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="editHint"
+        android:paddingStart="10dp"
         android:background="@drawable/edittextformat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -141,6 +143,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="editHint"
+        android:paddingStart="10dp"
         android:background="@drawable/edittextformat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -154,6 +157,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="editHint"
+        android:paddingStart="10dp"
         android:background="@drawable/edittextformat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
