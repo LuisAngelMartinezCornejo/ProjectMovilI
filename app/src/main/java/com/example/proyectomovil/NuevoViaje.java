@@ -64,7 +64,7 @@ public class NuevoViaje extends AppCompatActivity {
 
             public AdaptadorViajeHolder(@NonNull View itemView) {
                 super(itemView);
-                txtDestino = itemView.findViewById(R.id.txtDestino);
+                txtDestino = itemView.findViewById(R.id.txtDestinoViaje);
                 txtDias = itemView.findViewById(R.id.txtDiasViaje);
                 txtTransporte = itemView.findViewById(R.id.txtTransporteViaje);
                 txtCantidadBoletos = itemView.findViewById(R.id.txtCantidadBoletos);
