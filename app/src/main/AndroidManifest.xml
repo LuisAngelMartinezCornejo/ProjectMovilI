@@ -14,6 +14,21 @@
         android:theme="@style/Theme.ProyectoMovil"
         tools:targetApi="31">
         <activity
+            android:name=".ConfirmacionViaje"
+            android:exported="false" />
+        <activity
+            android:name=".EditarViajes"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPerfil"
+            android:exported="false" />
+        <activity
+            android:name=".MisViajes"
+            android:exported="false" />
+        <activity
+            android:name=".MiPerfil"
+            android:exported="false" />
+        <activity
             android:name=".ActivityRegister"
             android:exported="false" />
         <activity
