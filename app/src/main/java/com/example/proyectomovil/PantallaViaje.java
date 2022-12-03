@@ -40,7 +40,7 @@ public class PantallaViaje extends AppCompatActivity {
     public void siguiente(View view){
         Intent intent = new Intent(this, SeleccionAsientos.class);
         intent.putExtra("user", user);
-        intent.putExtra("user", viaje);
+        intent.putExtra("viaje", viaje);
         startActivity(intent);
         finish();
     }
