@@ -31,16 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="236dp"
-        android:layout_height="38dp"
-        android:background="@drawable/btnredondo"
-        android:text="@string/volverInicio"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="612dp" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvViajes"

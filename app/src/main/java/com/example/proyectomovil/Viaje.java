@@ -1,8 +1,9 @@
 package com.example.proyectomovil;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Viaje {
+public class Viaje implements Serializable {
     private int id;
     private Lugar lugar;
     private Transporte transporte;
