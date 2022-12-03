@@ -55,4 +55,7 @@
     <string name="title_click">Titulo</string>
     <string name="welcome_message">¡Hola Mauricio!</string>
     <string name="text_menu">Encuentra el viaje para tu siguiente destino.</string>
+    <string name="textNuevoViaje">Busca un viaje de tu agrado y añadelo a tus viajes.</string>
+    <string name="volverInicio">Volver al inicio</string>
+    <string name="tituloNuevoViaje">¡Selecciona un viaje de tu agrado!</string>
 </resources>
