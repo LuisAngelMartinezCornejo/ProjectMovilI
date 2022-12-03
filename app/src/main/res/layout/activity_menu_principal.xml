@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuPrincipal"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
     >
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <TextView
+            android:id="@+id/welcome_message"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="35sp"
+            android:textColor="@color/black"
+            android:text="@string/welcome_message"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginEnd="@dimen/margin_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="@string/text_menu"/>
+
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </ImageSwitcher>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/menu_header"
+        app:itemIconTint="@drawable/drawer_selector"
+        app:itemTextColor="@drawable/drawer_selector"
+        app:menu="@menu/menu"/>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

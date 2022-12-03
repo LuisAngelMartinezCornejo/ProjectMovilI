@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 if(nuevoUsuario()){
                     i = new Intent(MainActivity.this, MenuPrincipal.class);
                 }else{
-                    i = new Intent(MainActivity.this,ActivityLogin.class);
+                    i = new Intent(MainActivity.this, MenuPrincipal.class);
                 }
                 startActivity(i);
                 finish();
