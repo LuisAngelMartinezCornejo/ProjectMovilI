@@ -68,4 +68,10 @@
     <string name="textNuevoViaje">Busca un viaje de tu agrado y añadelo a tus viajes.</string>
     <string name="volverInicio">Volver al inicio</string>
     <string name="tituloNuevoViaje">¡Selecciona un viaje de tu agrado!</string>
+    <string name="destinoViaje">Destino</string>
+    <string name="idViajeMostrar">ID del viaje</string>
+    <string name="transporteV">Transporte</string>
+    <string name="cantidadDias">Cantidad de días</string>
+    <string name="cantidadBoletos">Cantidad de boletos</string>
+    <string name="fechaV">Fecha</string>
 </resources>
