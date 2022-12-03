@@ -169,6 +169,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/btnformat"
+        android:onClick="guardarInformacion"
         android:text="@string/btnGuardarPerfil"
         android:textColor="@color/white"
         android:textStyle="bold"
