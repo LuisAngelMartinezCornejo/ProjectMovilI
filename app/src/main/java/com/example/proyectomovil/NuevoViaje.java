@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ public class NuevoViaje extends AppCompatActivity {
 
     ArrayList<Viaje> viajes;
     RecyclerView rvViajes;
-
+    TextView txtDestino, txtDias, txtTransporte, txtCantidadBoletos;
     AdaptadorViaje av;
 
     Lugar cancun = new Lugar(1, "Cancun", "Quintana Roo", "México", true);
@@ -33,6 +34,7 @@ public class NuevoViaje extends AppCompatActivity {
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
         viajes = new ArrayList<Viaje>();
         viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", "Eric Martinez"));
+        viajes.add(new Viaje(2, cancun, avion, viajeCancun, 7, "4", "Eric Martinez"));
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvViajes.setLayoutManager(llm);
@@ -60,7 +62,7 @@ public class NuevoViaje extends AppCompatActivity {
 
         class AdaptadorViajeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-            TextView txtDestino, txtDias, txtTransporte, txtCantidadBoletos;
+
 
             public AdaptadorViajeHolder(@NonNull View itemView) {
                 super(itemView);
@@ -73,14 +75,15 @@ public class NuevoViaje extends AppCompatActivity {
 
             public void imprimir(int position){
                 txtDestino.setText(viajes.get(position).getLugar().getCiudad());
-                txtDias.setText(viajes.get(position).getDiasEstancia());
+                txtDias.setText(String.valueOf(viajes.get(position).getDiasEstancia()));
                 txtTransporte.setText(viajes.get(position).getTransporte().getTipo());
                 txtCantidadBoletos.setText(viajes.get(position).getAsientos());
             }
 
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
+                startActivity(i);
             }
         }
     }

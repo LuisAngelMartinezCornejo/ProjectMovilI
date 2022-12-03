@@ -141,15 +141,21 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
         Intent intent;
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
+                Intent i = new Intent(this,MenuPrincipal.class);
+                startActivity(i);
 
                 return true;
             case R.id.nav_crear_viaje:
-
+                Intent inv = new Intent(this,NuevoViaje.class);
+                startActivity(inv);
                 return true;
             case R.id.nav_mis_viaje:
-
+                Intent imv = new Intent(this,MisViajes.class);
+                startActivity(imv);
                 return true;
             case R.id.nav_perfil:
+                Intent ip = new Intent(this,MiPerfil.class);
+                startActivity(ip);
                 return true;
             case R.id.nav_salir:
                 return true;
