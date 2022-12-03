@@ -65,4 +65,7 @@
     <string name="Ocupados">Ocupados</string>
     <string name="TuSeleccion">Tu selección</string>
     <string name="Avanzar">Avanzar</string>
+    <string name="textNuevoViaje">Busca un viaje de tu agrado y añadelo a tus viajes.</string>
+    <string name="volverInicio">Volver al inicio</string>
+    <string name="tituloNuevoViaje">¡Selecciona un viaje de tu agrado!</string>
 </resources>
