@@ -1,6 +1,8 @@
 package com.example.proyectomovil;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario  implements Serializable {
     private String nombre;
     private String correo;
     private int telefono;
