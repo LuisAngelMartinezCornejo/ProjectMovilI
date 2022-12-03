@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A1C4E6"
+    tools:context=".PantallaViaje">
+
+    <TextView
+        android:id="@+id/txtPantallaViaje"
+        android:layout_width="302dp"
+        android:layout_height="93dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/infoViaje"
+        android:textColor="@color/darkgray"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtContenedor1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtContenedor1"
+        android:layout_width="302dp"
+        android:layout_height="90dp"
+        android:background="@drawable/fondoredondoblanco"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <TextView
+        android:id="@+id/txtContenedor2"
+        android:layout_width="302dp"
+        android:layout_height="90dp"
+        android:background="@drawable/fondoredondoblanco"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="258dp" />
+
+    <TextView
+        android:id="@+id/txtContenedor6"
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:background="@drawable/fondoredondoblanco"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="494dp" />
+
+    <TextView
+        android:id="@+id/txtContenedor3"
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:background="@drawable/fondoredondoblanco"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="366dp" />
+
+    <TextView
+        android:id="@+id/txtContenedor4"
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:background="@drawable/fondoredondoblanco"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="366dp" />
+
+    <TextView
+        android:id="@+id/txtContenedor5"
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:background="@drawable/fondoredondoblanco"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="494dp" />
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="302dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/btnredondoazul"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/siguiente"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="302dp"
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/txtContenedor1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPantallaViaje">
+
+        <TextView
+            android:id="@+id/txtDestino2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:text="@string/destino"
+            android:textColor="@color/azul_letras"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtDestinoInfo"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="302dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="102dp"
+        android:layout_marginBottom="18dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/txtContenedor4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/txtIDViaje2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:text="@string/idViaje"
+            android:textColor="@color/azul_letras"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtIDViajeInfo"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/txtContenedor3"
+        app:layout_constraintTop_toTopOf="@+id/txtContenedor3">
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/transporte"
+            android:textColor="@color/azul_letras"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            app:srcCompat="@drawable/ic_baseline_local_airport_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="108dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@+id/txtContenedor2"
+        tools:layout_editor_absoluteX="211dp">
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/cantDias"
+            android:textColor="@color/azul_letras"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtCantDias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70sp"
+            android:text="15"
+            android:textColor="@color/black"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginBottom="41dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintTop_toTopOf="@+id/txtContenedor3"
+        tools:layout_editor_absoluteX="54dp">
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/cantBoletos"
+            android:textColor="@color/azul_letras"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtCantBoletos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70sp"
+            android:text="4"
+            android:textColor="@color/black"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/txtContenedor6"
+        tools:layout_editor_absoluteY="494dp">
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/fecha"
+            android:textColor="@color/azul_letras"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtFechaInfo"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="20dp"
+            android:text="10 de diciembre del 2022"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

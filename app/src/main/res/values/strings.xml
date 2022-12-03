@@ -55,4 +55,14 @@
     <string name="title_click">Titulo</string>
     <string name="welcome_message">¡Hola Mauricio!</string>
     <string name="text_menu">Encuentra el viaje para tu siguiente destino.</string>
+    <string name="infoViaje">Información del viaje</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="cantDias">Cantidad de días:</string>
+    <string name="cantBoletos">Cantidad de boletos:</string>
+    <string name="encabezadoSeleccionAsientos">Selecciona tus asientos</string>
+    <string name="infoSeleccionAsientos">Elige en cuál lugar tú y tus acompañantes disfrutarán su viaje</string>
+    <string name="Disponibles">Disponibles</string>
+    <string name="Ocupados">Ocupados</string>
+    <string name="TuSeleccion">Tu selección</string>
+    <string name="Avanzar">Avanzar</string>
 </resources>

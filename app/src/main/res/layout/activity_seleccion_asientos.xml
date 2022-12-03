@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SeleccionAsientos">
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/encabezadoSeleccionAsientos"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/infoSeleccionAsientos"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.838" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="337dp"
+        android:layout_height="347dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="347dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnAsiento1"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="1"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento3"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="3"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento5"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="5"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento7"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="7"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento9"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="9"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="347dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnAsiento2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="2"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento4"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="4"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento6"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="6"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento8"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="8"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento10"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="10"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="347dp"
+            android:layout_marginStart="50dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnAsiento11"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="11"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento13"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="13"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento15"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="15"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento17"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="17"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento19"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="19"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="347dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnAsiento12"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="12"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento14"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="14"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento16"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="16"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento18"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="18"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btnAsiento20"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/fondo_redondo"
+                android:fontFamily="sans-serif-medium"
+                android:text="20"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="136dp"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAvanzar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="35dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo_negro" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondo_redondo_azul" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="100dp"
+                android:layout_height="33.33dp"
+                android:paddingTop="5dp"
+                android:text="@string/Disponibles"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="100dp"
+                android:layout_height="33.33dp"
+                android:paddingTop="5dp"
+                android:text="@string/Ocupados"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="100dp"
+                android:layout_height="33.33dp"
+                android:paddingTop="5dp"
+                android:text="@string/TuSeleccion"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAvanzar"
+        android:layout_width="175dp"
+        android:layout_height="45dp"
+        android:background="@drawable/btnredondoazul"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/Avanzar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
