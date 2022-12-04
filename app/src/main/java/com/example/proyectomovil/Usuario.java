@@ -1,6 +1,8 @@
 package com.example.proyectomovil;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private String nombre;
     private String correo;
     private int telefono;
@@ -14,6 +16,8 @@ public class Usuario {
         this.direccion = direccion;
         this.contraseña = contraseña;
     }
+
+    public Usuario() {}
 
     public String getNombre() {
         return nombre;
@@ -53,5 +57,15 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.telefono + "\n" +
+                "***" + this.contraseña + "\n" +
+                "nombre:" + this.nombre + "\n" +
+                "correo:" + this.correo + "\n" +
+                "direccion:" + this.direccion + "\n";
     }
 }

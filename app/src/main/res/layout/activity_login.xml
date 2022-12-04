@@ -82,17 +82,19 @@
         android:layout_marginTop="@dimen/margin"
         android:layout_marginBottom="@dimen/margin"
         android:text="@string/checkBox" />
+
     <Button
         android:id="@+id/btn_accept"
         android:layout_width="250dp"
         android:layout_height="45dp"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginBottom="@dimen/margin"
         android:background="@drawable/btnredondo"
-        android:layout_gravity="center"
-        android:textSize="20sp"
+        android:onClick="btnIniciar"
         android:text="@string/btnTextAccept"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="20sp" />
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_marginStart="@dimen/margin_start"
@@ -117,15 +119,15 @@
 
         <Button
             android:id="@+id/btn_registro"
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/registrar"
-            android:inputType="text"
-            android:textColor="@color/appcolor3"
-            android:fontFamily="sans-serif"
+            android:layout_marginTop="10dp"
             android:background="@color/white_2"
-            />
+            android:fontFamily="sans-serif"
+            android:inputType="text"
+            android:onClick="btnRegistrarse"
+            android:text="@string/registrar"
+            android:textColor="@color/appcolor3" />
     </LinearLayout>
 
 

@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,10 +38,15 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
 
     private Timer timer = null;
 
+    private Usuario usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -155,13 +161,27 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                 return true;
             case R.id.nav_perfil:
                 Intent ip = new Intent(this,MiPerfil.class);
+                ip.putExtra("usuario", usuario);
                 startActivity(ip);
                 return true;
             case R.id.nav_salir:
+                CerrarSesion();
                 return true;
             default:
                 throw new IllegalArgumentException("menu option not implemented!!");
         }
+    }
+
+    private void CerrarSesion()
+    {
+        SharedPreferences preferences = this.getSharedPreferences("user.dat", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -52,17 +52,16 @@
 
         <EditText
             android:id="@+id/edt_username"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="@dimen/margin_start"
-            android:layout_marginEnd="@dimen/margin_start"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="@string/name"
-            android:paddingStart="20dp"
-            android:inputType="number"
-            android:fontFamily="sans-serif"
+            android:layout_marginStart="@dimen/margin_start"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/margin_start"
             android:background="@drawable/borde_redondo"
-            />
+            android:fontFamily="sans-serif"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:paddingStart="20dp" />
         <TextView
             android:layout_marginTop="15dp"
             android:layout_marginStart="@dimen/margin_start"
@@ -146,12 +145,13 @@
             android:id="@+id/btn_accept_register"
             android:layout_width="250dp"
             android:layout_height="45dp"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
             android:background="@drawable/btnredondo"
-            android:layout_gravity="center"
-            android:textSize="20sp"
+            android:onClick="btnIniciar"
             android:text="@string/btnTextAccept"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
         <LinearLayout
             android:layout_marginStart="@dimen/margin_start"
             android:layout_marginEnd="@dimen/margin_start"
@@ -175,15 +175,15 @@
 
             <Button
                 android:id="@+id/btn_login_register"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
-                android:inputType="text"
-                android:textColor="@color/appcolor3"
-                android:fontFamily="sans-serif"
+                android:layout_marginTop="10dp"
                 android:background="@color/white_2"
-                />
+                android:fontFamily="sans-serif"
+                android:inputType="text"
+                android:onClick="btnInicioSesion"
+                android:text="@string/login"
+                android:textColor="@color/appcolor3" />
         </LinearLayout>
 
 

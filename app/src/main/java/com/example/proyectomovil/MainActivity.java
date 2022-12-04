@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i;
-                if(nuevoUsuario()){
+                if(estaRegistrado()){
                     i = new Intent(MainActivity.this, MenuPrincipal.class);
                 }else{
-                    i = new Intent(MainActivity.this, MenuPrincipal.class);
+                    i = new Intent(MainActivity.this, ActivityLogin.class);
                 }
                 startActivity(i);
                 finish();
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         tiempo.schedule(tarea,1000);
     }
 
-    private boolean nuevoUsuario() {
+    private boolean estaRegistrado() {
         SharedPreferences preferences = this.getSharedPreferences("user.dat",MODE_PRIVATE);
         return preferences.getBoolean(REGISTRADO,false);
     }
