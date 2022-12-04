@@ -8,6 +8,8 @@ public class Usuario implements Serializable {
     private int telefono;
     private String direccion;
     private String contraseña;
+    public Viaje[] viajesUsuario = new Viaje[10];
+    public int contadorViajes = 0;
 
     public Usuario(String nombre, String correo, int telefono, String direccion, String contraseña) {
         this.nombre = nombre;

@@ -213,6 +213,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/btnformat"
+        android:onClick="entendido"
         android:text="@string/entendido"
         android:textColor="@color/white"
         android:textStyle="bold"

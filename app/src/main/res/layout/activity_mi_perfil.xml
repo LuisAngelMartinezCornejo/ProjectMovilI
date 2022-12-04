@@ -161,6 +161,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/btnformat"
+        android:onClick="editarInformacion"
         android:text="@string/btnEditarPerfil"
         android:textColor="@color/white"
         android:textStyle="bold"

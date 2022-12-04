@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -22,6 +23,8 @@ public class NuevoViaje extends AppCompatActivity {
     TextView txtDestino, txtDias, txtTransporte, txtCantidadBoletos;
     AdaptadorViaje av;
 
+    Usuario user;
+
     Lugar cancun = new Lugar(1, "Cancun", "Quintana Roo", "México", true);
     Transporte avion = new Transporte("Avión", "Volaris", "F101", "20310", "Luis Cornejo");
     Date viajeCancun = new Date(2022, 12, 15);
@@ -31,10 +34,12 @@ public class NuevoViaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_viaje);
 
+        user = (Usuario) getIntent().getSerializableExtra("user");
+
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
         viajes = new ArrayList<Viaje>();
         viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", "Eric Martinez"));
-        viajes.add(new Viaje(2, cancun, avion, viajeCancun, 7, "4", "Eric Martinez"));
+        viajes.add(new Viaje(2, cancun, avion, viajeCancun, 5, "2", "Mauricio Farfan"));
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvViajes.setLayoutManager(llm);
@@ -62,8 +67,6 @@ public class NuevoViaje extends AppCompatActivity {
 
         class AdaptadorViajeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
-
             public AdaptadorViajeHolder(@NonNull View itemView) {
                 super(itemView);
                 txtDestino = itemView.findViewById(R.id.txtDestinoViaje);
@@ -83,7 +86,10 @@ public class NuevoViaje extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
+                i.putExtra("user", user);
+                i.putExtra("viaje", viajes.get(getLayoutPosition()));
                 startActivity(i);
+                finish();
             }
         }
     }
