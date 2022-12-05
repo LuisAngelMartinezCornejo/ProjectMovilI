@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class ActivityLogin extends AppCompatActivity {
 
     EditText editTextTelefono, editTextContrasena;

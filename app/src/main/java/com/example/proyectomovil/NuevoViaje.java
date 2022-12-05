@@ -1,10 +1,5 @@
 package com.example.proyectomovil;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -12,11 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -53,12 +52,12 @@ public class NuevoViaje extends AppCompatActivity  {
 
         @NonNull
         @Override
-        public AdaptadorViaje.AdaptadorViajeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public AdaptadorViajeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new AdaptadorViajeHolder(getLayoutInflater().inflate(R.layout.itemrecyclerview, parent, false));
         }
 
         @Override
-        public void onBindViewHolder(@NonNull AdaptadorViaje.AdaptadorViajeHolder holder, int position) {
+        public void onBindViewHolder(@NonNull AdaptadorViajeHolder holder, int position) {
             holder.imprimir(position);
         }
 

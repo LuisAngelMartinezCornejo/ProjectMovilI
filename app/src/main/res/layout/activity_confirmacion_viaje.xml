@@ -210,13 +210,13 @@
         android:id="@+id/button5"
         android:layout_width="236dp"
         android:layout_height="38dp"
-        android:layout_marginStart="84dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/btnformat"
         android:onClick="entendido"
         android:text="@string/entendido"
         android:textColor="@color/white"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
 </androidx.constraintlayout.widget.ConstraintLayout>
