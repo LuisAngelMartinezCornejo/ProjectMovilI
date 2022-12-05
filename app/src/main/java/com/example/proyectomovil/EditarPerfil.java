@@ -33,7 +33,7 @@ public class EditarPerfil extends AppCompatActivity {
         saludo.setText(MessageFormat.format("¡Hola {0}!", user.getNombre()));
         edtNombre.setText(user.getNombre());
         edtCorreo.setText(user.getCorreo());
-        edtTelefono.setText(user.getCorreo());
+        edtTelefono.setText(String.valueOf(user.getTelefono()));
         edtDireccion.setText(user.getDireccion());
     }
 

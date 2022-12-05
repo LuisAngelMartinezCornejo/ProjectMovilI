@@ -10,10 +10,8 @@ import java.util.Random;
 
 
 public class SeleccionAsientos extends AppCompatActivity {
-    Usuario user;
-    Viaje viaje;
     Button avanzar;
-    String asientos;
+    String asientos="";
     Button btnAsiento1;
     Button btnAsiento2;
     Button btnAsiento3;
@@ -40,8 +38,6 @@ public class SeleccionAsientos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_asientos);
-        user = (Usuario) getIntent().getSerializableExtra("user");
-        viaje = (Viaje) getIntent().getSerializableExtra("viaje");
 
 
 
@@ -97,10 +93,8 @@ public class SeleccionAsientos extends AppCompatActivity {
         btnAsiento20.setOnClickListener(view->func(btnAsiento20,19));
 
         avanzar.setOnClickListener(view -> {
-            viaje.setAsientos(asientos);
+            Comun.user.viajesUsuario.setAsientos(asientos);
             Intent p = new Intent(this,ConfirmacionViaje.class);
-            p.putExtra("user",user);
-            p.putExtra("viaje",viaje);
             startActivity(p);
             finish();
         });
@@ -203,7 +197,7 @@ public class SeleccionAsientos extends AppCompatActivity {
     private void func(Button btnAsiento,int pos) {
         if(selected[pos] == 0){
             selected[pos] = 1;
-            asientos = asientos + String.valueOf(pos+1);
+            asientos = asientos + " " + String.valueOf(pos+1);
             btnAsiento.setBackgroundColor(getResources().getColor(R.color.blue2));
         }else if (selected[pos] == 1){
             selected[pos] = 0;

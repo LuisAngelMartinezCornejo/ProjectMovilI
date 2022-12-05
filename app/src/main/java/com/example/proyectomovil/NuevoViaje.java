@@ -7,23 +7,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class NuevoViaje extends AppCompatActivity {
+public class NuevoViaje extends AppCompatActivity  {
 
-    ArrayList<Viaje> viajes;
+    ArrayList<Viaje> viajes = new ArrayList<>();
     RecyclerView rvViajes;
     TextView txtDestino, txtDias, txtTransporte, txtCantidadBoletos;
     AdaptadorViaje av;
 
-    Usuario user;
+    Lugar vallarta = new Lugar(2, "Vallarta", "Jalisco", "México", true);
 
     Lugar cancun = new Lugar(1, "Cancun", "Quintana Roo", "México", true);
     Transporte avion = new Transporte("Avión", "Volaris", "F101", "20310", "Luis Cornejo");
@@ -34,12 +38,10 @@ public class NuevoViaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_viaje);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
-
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
         viajes = new ArrayList<Viaje>();
         viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", "Eric Martinez"));
-        viajes.add(new Viaje(2, cancun, avion, viajeCancun, 5, "2", "Mauricio Farfan"));
+        viajes.add(new Viaje(2, vallarta, avion, viajeCancun, 5, "2", "Mauricio Farfan"));
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvViajes.setLayoutManager(llm);
@@ -65,6 +67,8 @@ public class NuevoViaje extends AppCompatActivity {
             return viajes.size();
         }
 
+
+
         class AdaptadorViajeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             public AdaptadorViajeHolder(@NonNull View itemView) {
@@ -82,12 +86,14 @@ public class NuevoViaje extends AppCompatActivity {
                 txtTransporte.setText(viajes.get(position).getTransporte().getTipo());
                 txtCantidadBoletos.setText(viajes.get(position).getAsientos());
             }
-
+            Viaje v;
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
-                i.putExtra("user", user);
-                i.putExtra("viaje", viajes.get(getLayoutPosition()));
+                v = viajes.get(getLayoutPosition());
+                //Toast.makeText(NuevoViaje.this,"dsfa",Toast.LENGTH_LONG).show();
+
+                Comun.user.setViajesUsuario(v);
                 startActivity(i);
                 finish();
             }

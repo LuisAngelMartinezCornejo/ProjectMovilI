@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 public class ConfirmacionViaje extends AppCompatActivity {
 
-    Usuario user;
-    Viaje viaje;
-
     TextView idViaje, destino, transporte, fecha, dias, asientos, reservacionNombre;
 
     @Override
@@ -19,8 +16,6 @@ public class ConfirmacionViaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacion_viaje);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
-        viaje = (Viaje) getIntent().getSerializableExtra("viaje");
 
         idViaje = (TextView) findViewById(R.id.txtIDViaje);
         destino = (TextView) findViewById(R.id.txtDestino);
@@ -30,21 +25,20 @@ public class ConfirmacionViaje extends AppCompatActivity {
         asientos = (TextView) findViewById(R.id.txtAsientos);
         reservacionNombre = (TextView) findViewById(R.id.txtReservacion);
 
-        idViaje.setText(viaje.getId());
-        destino.setText(viaje.getLugar().getCiudad());
-        transporte.setText(viaje.getTransporte().getTipo());
-        fecha.setText(viaje.getFecha().toString());
-        dias.setText(viaje.getDiasEstancia());
-        asientos.setText(viaje.getAsientos());
-        reservacionNombre.setText(viaje.getNombreReserva());
+        idViaje.setText(String.valueOf(Comun.user.viajesUsuario.getId()));
+        destino.setText(Comun.user.viajesUsuario.getLugar().getCiudad());
+        transporte.setText(Comun.user.viajesUsuario.getTransporte().getTipo());
+        fecha.setText(Comun.user.viajesUsuario.getFecha().toString());
+        dias.setText(String.valueOf(Comun.user.viajesUsuario.getDiasEstancia()));
+        asientos.setText(Comun.user.viajesUsuario.getAsientos());
+        reservacionNombre.setText(Comun.user.viajesUsuario.getNombreReserva());
     }
 
     public void entendido(View view){
-        user.viajesUsuario[user.contadorViajes] = viaje;
-        user.contadorViajes++;
+
+        Comun.user.contadorViajes++;
 
         Intent intent = new Intent(this, MenuPrincipal.class);
-        intent.putExtra("user", user);
         startActivity(intent);
         finish();
     }

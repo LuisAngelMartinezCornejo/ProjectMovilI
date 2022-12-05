@@ -2,6 +2,7 @@ package com.example.proyectomovil;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -87,6 +88,7 @@ public class APIArchivo {
             return resultado;
         }
         catch (Exception e) {
+            Log.d("errores",e.toString());
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
             return new Usuario("", "", -1, "", "");
         }

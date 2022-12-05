@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -35,7 +36,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
     private int position = 0;
 
     private static final Integer DURATION = 5000;
-
+    private TextView tx;
     private Timer timer = null;
 
     private Usuario usuario;
@@ -47,6 +48,8 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
+        tx = findViewById(R.id.welcome_message);
+        tx.setText("Hola " + usuario.getNombre());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -148,11 +151,13 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
                 Intent i = new Intent(this,MenuPrincipal.class);
+                i.putExtra("usuario", usuario);
                 startActivity(i);
 
                 return true;
             case R.id.nav_crear_viaje:
                 Intent inv = new Intent(this,NuevoViaje.class);
+                Comun.user = usuario;
                 startActivity(inv);
                 return true;
             case R.id.nav_mis_viaje:
@@ -161,7 +166,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                 return true;
             case R.id.nav_perfil:
                 Intent ip = new Intent(this,MiPerfil.class);
-                ip.putExtra("usuario", usuario);
+                ip.putExtra("user", usuario);
                 startActivity(ip);
                 return true;
             case R.id.nav_salir:

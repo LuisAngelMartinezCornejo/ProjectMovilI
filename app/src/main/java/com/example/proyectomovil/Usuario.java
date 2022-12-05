@@ -1,6 +1,7 @@
 package com.example.proyectomovil;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Usuario implements Serializable {
     private String nombre;
@@ -8,8 +9,11 @@ public class Usuario implements Serializable {
     private int telefono;
     private String direccion;
     private String contraseña;
-    public Viaje[] viajesUsuario = new Viaje[10];
+
+    public Viaje viajesUsuario = new Viaje();
     public int contadorViajes = 0;
+
+
 
     public Usuario(String nombre, String correo, int telefono, String direccion, String contraseña) {
         this.nombre = nombre;
@@ -19,7 +23,16 @@ public class Usuario implements Serializable {
         this.contraseña = contraseña;
     }
 
-    public Usuario() {}
+    public Viaje getViajesUsuario() {
+        return viajesUsuario;
+    }
+
+    public void setViajesUsuario(Viaje viajesUsuario) {
+        this.viajesUsuario = viajesUsuario;
+    }
+
+    public Usuario() {
+    }
 
     public String getNombre() {
         return nombre;

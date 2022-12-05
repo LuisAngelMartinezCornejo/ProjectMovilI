@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class PantallaViaje extends AppCompatActivity {
 
     Usuario user;
+    ArrayList<Viaje> viajes  = new ArrayList<>();
     Viaje viaje;
 
     TextView destino, id, transporte, cantidadDias, cantidadBoletos, fecha;
@@ -23,32 +25,30 @@ public class PantallaViaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_viaje);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
-        viaje = (Viaje) getIntent().getSerializableExtra("viaje");
+        user = Comun.user;
+        viaje  = user.getViajesUsuario();
 
         destino = (TextView) findViewById(R.id.txtDestinoInfo);
         id = (TextView) findViewById(R.id.txtIDInfo);
         transporte = (TextView) findViewById(R.id.txtTransporteInfo);
         cantidadDias = (TextView) findViewById(R.id.txtCantDiasInfo);
-        cantidadBoletos = (TextView) findViewById(R.id.txtCantidadBoletos);
+        cantidadBoletos = (TextView) findViewById(R.id.txtCantBoletosInfo);
         fecha = (TextView) findViewById(R.id.txtFechaInfo);
 
-        destino.setText(viaje.getLugar().getCiudad());
-        id.setText(viaje.getId());
+        destino.setText(String.valueOf(viaje.getLugar().getCiudad()));
+        id.setText(String.valueOf(viaje.getId()));
         transporte.setText(viaje.getTransporte().getTipo());
-        cantidadDias.setText(viaje.getDiasEstancia());
-        cantidadBoletos.setText(viaje.getAsientos());
+        cantidadDias.setText(String.valueOf(viaje.getDiasEstancia()));
+        cantidadBoletos.setText(String.valueOf(viaje.getAsientos()));
         fecha.setText(viaje.getFecha().toString());
     }
 
     public void siguiente(View view){
         Intent intent = new Intent(this, SeleccionAsientos.class);
-        intent.putExtra("user", user);
-        intent.putExtra("viaje", viaje);
         startActivity(intent);
         finish();
         btn = findViewById(R.id.btnSiguiente);
-        btn.setOnClickListener(view->{
+        btn.setOnClickListener(View->{
             Intent i =  new Intent(this, SeleccionAsientos.class);
             startActivity(i);
         });

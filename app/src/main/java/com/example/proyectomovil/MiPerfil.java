@@ -1,6 +1,7 @@
 package com.example.proyectomovil;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class MiPerfil extends AppCompatActivity {
         saludo.setText(MessageFormat.format("¡Hola {0}!", user.getNombre()));
         nombre.setText(user.getNombre());
         correo.setText(user.getCorreo());
-        telefono.setText(user.getCorreo());
+        telefono.setText(String.valueOf(user.getTelefono()));
         direccion.setText(user.getDireccion());
     }
 
@@ -41,4 +42,14 @@ public class MiPerfil extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MenuPrincipal.class);
+        intent.putExtra("usuario", user);
+        startActivity(intent);
+        finish();
+    }
+
+
 }

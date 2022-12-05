@@ -131,7 +131,7 @@
             android:background="@drawable/borde_redondo"/>
 
         <CheckBox
-            android:id="@+id/checkbox__register"
+            android:id="@+id/checkbox_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start"

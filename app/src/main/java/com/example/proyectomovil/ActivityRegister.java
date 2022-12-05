@@ -31,7 +31,7 @@ public class ActivityRegister extends AppCompatActivity {
         editTextNombre = findViewById(R.id.edt_username);
         editTextTelefono = findViewById(R.id.edt_number_register);
         editTextContrasena = findViewById(R.id.edt_password_regsiter);
-        checkBoxTerminos = findViewById(R.id.checkbox__register);
+        checkBoxTerminos = findViewById(R.id.checkbox_register);
     }
 
     public void btnIniciar(View view)
@@ -54,7 +54,7 @@ public class ActivityRegister extends AppCompatActivity {
             APIArchivo API = new APIArchivo(this);
             usuario = API.POST_Usuario(usuario, this);
 
-            Intent intent = new Intent(ActivityRegister.this, MenuPrincipal.class);
+            Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
             intent.putExtra("usuario", usuario);
             startActivity(intent);
             finish();
