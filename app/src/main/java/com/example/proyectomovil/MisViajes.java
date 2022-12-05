@@ -1,5 +1,6 @@
 package com.example.proyectomovil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -88,7 +89,9 @@ MisViajes extends AppCompatActivity {
     }
 
     public void CancelarViaje(View view){
-
+        Intent intent = new Intent(this, EditarViajes.class);
+        startActivity(intent);
+        finish();
     }
 }
 

@@ -25,6 +25,18 @@ public class Viaje implements Serializable {
         this.nombreReserva = nombreReserva;
     }
 
+    @Override
+    public String toString()
+    {
+        return "IDViaje: " + this.id + "\n" +
+                "Lugar: " + this.lugar.getCiudad() + "\n" +
+                "Transporte: " + this.transporte.getTipo() + "\n" +
+                "Fecha: " + this.fecha + "\n" +
+                "Dias de estancia:" + this.diasEstancia + "\n" +
+                "Asientos: " + this.asientos + "\n" +
+                "A nombre de: " + this.nombreReserva;
+    }
+
     public int getId() {
         return id;
     }
