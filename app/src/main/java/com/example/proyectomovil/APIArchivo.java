@@ -64,7 +64,7 @@ public class APIArchivo {
                     String direccion = linea.replace("direccion:","");
 
                     resultado = new Usuario();
-                    resultado.setTelefono(Integer.parseInt(telefono));
+                    resultado.setTelefono(Long.parseLong(telefono));
                     resultado.setContraseña(linea);
                     resultado.setNombre(nombre);
                     resultado.setCorreo(correo);
@@ -104,7 +104,7 @@ public class APIArchivo {
                     resultado = new Usuario();
                     if (pass.equals(linea))
                     {
-                        resultado.setTelefono(Integer.parseInt(telefono));
+                        resultado.setTelefono(Long.parseLong(telefono));
                         resultado.setContraseña(contrasena);
                         linea = reader.readLine();
                         String nombre = linea.replace("nombre:", "");

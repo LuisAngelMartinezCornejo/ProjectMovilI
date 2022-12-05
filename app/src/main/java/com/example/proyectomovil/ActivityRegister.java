@@ -57,7 +57,7 @@ public class ActivityRegister extends AppCompatActivity {
         {
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
-            usuario.setTelefono(Integer.parseInt(telefono));
+            usuario.setTelefono(Long.parseLong(telefono));
             usuario.setContraseña(contrasena);
 
             APIArchivo API = new APIArchivo(this);
@@ -84,7 +84,7 @@ public class ActivityRegister extends AppCompatActivity {
         SharedPreferences preferences = this.getSharedPreferences("user.dat", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("registrado", true);
-        editor.putString("telefono", Integer.toString(usuario.getTelefono()));
+        editor.putString("telefono", Long.toString(usuario.getTelefono()));
         editor.apply();
     }
 
