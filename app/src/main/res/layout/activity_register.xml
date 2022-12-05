@@ -59,7 +59,7 @@
             android:layout_marginEnd="@dimen/margin_start"
             android:background="@drawable/borde_redondo"
             android:fontFamily="sans-serif"
-            android:hint="@string/name"
+            android:hint="@string/ingNombre"
             android:inputType="text"
             android:paddingStart="20dp" />
         <TextView
@@ -149,7 +149,7 @@
             android:layout_marginTop="@dimen/margin"
             android:background="@drawable/btnredondo"
             android:onClick="btnIniciar"
-            android:text="@string/btnTextAccept"
+            android:text="@string/registrar"
             android:textColor="@color/white"
             android:textSize="20sp" />
         <LinearLayout

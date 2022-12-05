@@ -57,7 +57,7 @@ public class ActivityLogin extends AppCompatActivity {
         SharedPreferences preferences = this.getSharedPreferences("user.dat", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("registrado", true);
-        editor.putString("telefono", Integer.toString(usuario.getTelefono()));
+        editor.putString("telefono", Long.toString(usuario.getTelefono()));
         editor.apply();
     }
 

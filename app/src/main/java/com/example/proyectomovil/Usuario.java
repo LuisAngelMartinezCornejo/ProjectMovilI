@@ -6,7 +6,7 @@ import java.util.Date;
 public class Usuario implements Serializable {
     private String nombre;
     private String correo;
-    private int telefono;
+    private long telefono;
     private String direccion;
     private String contraseña;
 
@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
 
 
 
-    public Usuario(String nombre, String correo, int telefono, String direccion, String contraseña) {
+    public Usuario(String nombre, String correo, long telefono, String direccion, String contraseña) {
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
@@ -50,11 +50,11 @@ public class Usuario implements Serializable {
         this.correo = correo;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 

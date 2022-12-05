@@ -32,14 +32,11 @@ public class ConfirmacionViaje extends AppCompatActivity {
         dias.setText(String.valueOf(Comun.user.viajesUsuario.getDiasEstancia()));
         asientos.setText(Comun.user.viajesUsuario.getAsientos());
         reservacionNombre.setText(Comun.user.viajesUsuario.getNombreReserva());
+
+        Comun.MisViajes.add(Comun.user.viajesUsuario);
     }
 
     public void entendido(View view){
-
-        Comun.user.contadorViajes++;
-
-        Intent intent = new Intent(this, MenuPrincipal.class);
-        startActivity(intent);
         finish();
     }
 }

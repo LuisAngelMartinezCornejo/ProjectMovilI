@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.io.Serializable;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,10 +28,15 @@ public class NuevoViaje extends AppCompatActivity  {
     AdaptadorViaje av;
 
     Lugar vallarta = new Lugar(2, "Vallarta", "Jalisco", "México", true);
+    Lugar cabos = new Lugar(3, "Cabos", "Baja California Sur", "México", true);
+    Lugar tokio = new Lugar(4, "Tokio", "Maruchan", "Japon", true);
 
     Lugar cancun = new Lugar(1, "Cancun", "Quintana Roo", "México", true);
     Transporte avion = new Transporte("Avión", "Volaris", "F101", "20310", "Luis Cornejo");
-    Date viajeCancun = new Date(2022, 12, 15);
+    Transporte camion = new Transporte("Camión", "Volaris", "F101", "20310", "Luis Cornejo");
+    Transporte apata = new Transporte("A pie", "Volaris", "F101", "20310", "Luis Cornejo");
+    Date viajeCancun = new Date(122, 11, 15);
+    Date viajeTokio = new Date(123, 5, 6);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +44,12 @@ public class NuevoViaje extends AppCompatActivity  {
         setContentView(R.layout.activity_nuevo_viaje);
 
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
+        rvViajes.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         viajes = new ArrayList<Viaje>();
-        viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", "Eric Martinez"));
-        viajes.add(new Viaje(2, vallarta, avion, viajeCancun, 5, "2", "Mauricio Farfan"));
+        viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", Comun.user.getNombre()));
+        viajes.add(new Viaje(2, vallarta, camion, viajeTokio, 5, "2", Comun.user.getNombre()));
+        viajes.add(new Viaje(3, cabos, apata, viajeTokio, 9, "5", Comun.user.getNombre()));
+        viajes.add(new Viaje(4, tokio, avion, viajeCancun, 15, "2", Comun.user.getNombre()));
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvViajes.setLayoutManager(llm);
