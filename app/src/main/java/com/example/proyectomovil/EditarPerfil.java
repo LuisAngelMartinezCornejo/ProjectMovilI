@@ -40,7 +40,7 @@ public class EditarPerfil extends AppCompatActivity {
     public void guardarInformacion(View view){
         user.setNombre(edtNombre.getText().toString());
         user.setCorreo(edtCorreo.getText().toString());
-        user.setTelefono(Integer.parseInt(edtTelefono.getText().toString()));
+        user.setTelefono(Long.parseLong(edtTelefono.getText().toString()));
         user.setDireccion(edtDireccion.getText().toString());
 
         Intent intent = new Intent(this, MiPerfil.class);
