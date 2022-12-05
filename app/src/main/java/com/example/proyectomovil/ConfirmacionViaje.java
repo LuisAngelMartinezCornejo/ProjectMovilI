@@ -35,11 +35,6 @@ public class ConfirmacionViaje extends AppCompatActivity {
     }
 
     public void entendido(View view){
-
-        Comun.user.contadorViajes++;
-
-        Intent intent = new Intent(this, MenuPrincipal.class);
-        startActivity(intent);
         finish();
     }
 }
