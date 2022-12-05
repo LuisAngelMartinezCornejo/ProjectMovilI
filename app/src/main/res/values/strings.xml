@@ -74,4 +74,5 @@
     <string name="cantidadDias">Cantidad de días</string>
     <string name="cantidadBoletos">Cantidad de boletos</string>
     <string name="fechaV">Fecha</string>
+    <string name="viaje">Viaje</string>
 </resources>
