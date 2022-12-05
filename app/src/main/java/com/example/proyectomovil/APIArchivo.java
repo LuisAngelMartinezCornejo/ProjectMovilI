@@ -132,6 +132,10 @@ public class APIArchivo {
             resultado.setNombre("NOTFOUND");
             return resultado;
         }
+        catch (FileNotFoundException e)
+        {
+            return new Usuario("NOTFOUND", "", -1, "", "");
+        }
         catch (Exception e) {
             Log.d("errores",e.toString());
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
