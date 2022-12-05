@@ -42,7 +42,7 @@ public class ActivityLogin extends AppCompatActivity {
             else
             {
                 if (checkPreferences.isChecked())
-                    SetPreferences();
+                    SetPreferences(usuario);
                 Intent intent = new Intent(ActivityLogin.this, MenuPrincipal.class);
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);
@@ -51,11 +51,12 @@ public class ActivityLogin extends AppCompatActivity {
         }
     }
 
-    private void SetPreferences()
+    private void SetPreferences(Usuario usuario)
     {
         SharedPreferences preferences = this.getSharedPreferences("user.dat", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("registrado", true);
+        editor.putString("telefono", Integer.toString(usuario.getTelefono()));
         editor.apply();
     }
 

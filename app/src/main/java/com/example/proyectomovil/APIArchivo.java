@@ -42,6 +42,51 @@ public class APIArchivo {
         }
     }
 
+    public Usuario GET_Usuario_Telefono(String telefono, Context context)
+    {
+        Usuario resultado = new Usuario();
+        try
+        {
+            input = new InputStreamReader(context.openFileInput(archivoUsuarios));
+            BufferedReader reader = new BufferedReader(input);
+            String linea = reader.readLine();
+            while (linea != null)
+            {
+                if (linea.equals(telefono))
+                {
+                    linea = reader.readLine();
+                    String contrasena = linea.replace("***", "");
+                    linea = reader.readLine();
+                    String nombre = linea.replace("nombre:", "");
+                    linea = reader.readLine();
+                    String correo = linea.replace("correo:", "");
+                    linea = reader.readLine();
+                    String direccion = linea.replace("direccion:","");
+
+                    resultado = new Usuario();
+                    resultado.setTelefono(Integer.parseInt(telefono));
+                    resultado.setContraseña(linea);
+                    resultado.setNombre(nombre);
+                    resultado.setCorreo(correo);
+                    resultado.setDireccion(direccion);
+
+                    reader.close();
+                    return resultado;
+                }
+                linea = reader.readLine();
+            }
+            reader.close();
+            input.close();
+            resultado.setNombre("NOTFOUND");
+            return resultado;
+        }
+        catch (Exception e) {
+            Log.d("errores",e.toString());
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+            return new Usuario("", "", -1, "", "");
+        }
+    }
+
     public Usuario GET_Usuario(String telefono, String contrasena, Context context)
     {
         Usuario resultado = new Usuario();

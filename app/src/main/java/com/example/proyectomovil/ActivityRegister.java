@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -54,7 +55,9 @@ public class ActivityRegister extends AppCompatActivity {
             APIArchivo API = new APIArchivo(this);
             usuario = API.POST_Usuario(usuario, this);
 
-            Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
+            SetPreferences(usuario);
+
+            Intent intent = new Intent(ActivityRegister.this, MenuPrincipal.class);
             intent.putExtra("usuario", usuario);
             startActivity(intent);
             finish();
@@ -66,6 +69,15 @@ public class ActivityRegister extends AppCompatActivity {
         Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
         startActivity(intent);
         finish();
+    }
+
+    private void SetPreferences(Usuario usuario)
+    {
+        SharedPreferences preferences = this.getSharedPreferences("user.dat", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("registrado", true);
+        editor.putString("telefono", Integer.toString(usuario.getTelefono()));
+        editor.apply();
     }
 
 
