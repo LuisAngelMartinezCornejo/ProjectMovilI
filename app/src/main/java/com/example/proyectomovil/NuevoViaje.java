@@ -30,7 +30,7 @@ public class NuevoViaje extends AppCompatActivity  {
 
     Lugar cancun = new Lugar(1, "Cancun", "Quintana Roo", "México", true);
     Transporte avion = new Transporte("Avión", "Volaris", "F101", "20310", "Luis Cornejo");
-    Date viajeCancun = new Date(2022, 12, 15);
+    Date viajeCancun = new Date(122, 11, 15);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
