@@ -24,7 +24,7 @@ public class NuevoViaje extends AppCompatActivity  {
 
     ArrayList<Viaje> viajes = new ArrayList<>();
     RecyclerView rvViajes;
-    TextView txtDestino, txtDias, txtTransporte, txtCantidadBoletos;
+    TextView txtDestino;
     AdaptadorViaje av;
 
     Lugar vallarta = new Lugar(2, "Vallarta", "Jalisco", "México", true);
@@ -44,7 +44,6 @@ public class NuevoViaje extends AppCompatActivity  {
         setContentView(R.layout.activity_nuevo_viaje);
 
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
-        rvViajes.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         viajes = new ArrayList<Viaje>();
         viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", Comun.user.getNombre()));
         viajes.add(new Viaje(2, vallarta, camion, viajeTokio, 5, "2", Comun.user.getNombre()));
@@ -82,17 +81,11 @@ public class NuevoViaje extends AppCompatActivity  {
             public AdaptadorViajeHolder(@NonNull View itemView) {
                 super(itemView);
                 txtDestino = itemView.findViewById(R.id.txtDestinoViaje);
-                txtDias = itemView.findViewById(R.id.txtDiasViaje);
-                txtTransporte = itemView.findViewById(R.id.txtTransporteViaje);
-                txtCantidadBoletos = itemView.findViewById(R.id.txtCantidadBoletos);
                 itemView.setOnClickListener(this);
             }
 
             public void imprimir(int position){
                 txtDestino.setText(viajes.get(position).getLugar().getCiudad());
-                txtDias.setText(String.valueOf(viajes.get(position).getDiasEstancia()));
-                txtTransporte.setText(viajes.get(position).getTransporte().getTipo());
-                txtCantidadBoletos.setText(viajes.get(position).getAsientos());
             }
             Viaje v;
             @Override
