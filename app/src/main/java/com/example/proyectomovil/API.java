@@ -14,9 +14,10 @@ import java.util.Map;
 
 public class API {
 
-    public static boolean GET_User_Auth(String phone, String password)
+    public static Usuario GET_User_Auth(String phone, String password)
     {
-        final int[] myResult = {0};
+        Usuario usuario = new Usuario();
+        usuario.setNombre("");
         StringRequest request = new StringRequest(Request.Method.GET, DBCONSTS.URL_AUTH + phone,
                 new Response.Listener<String>() {
                     @Override
@@ -31,7 +32,11 @@ public class API {
                             {
                                 if (password.equals(result.getString("password").trim()))
                                 {
-                                    myResult[0] = 1;
+                                    usuario.setNombre(result.getString("nombre"));
+                                    usuario.setIDUser(result.getInt("iduser"));
+                                    usuario.setCorreo(result.getString("mail"));
+                                    usuario.setTelefono(Long.parseLong(result.getString("phone")));
+                                    usuario.setDireccion(result.getString("direction"));
                                 }
                             }
                         } catch (JSONException e) {
@@ -51,6 +56,6 @@ public class API {
                 return super.getParams();
             }
         };
-        return myResult[0] == 1;
+        return usuario;
     }
 }

@@ -33,7 +33,22 @@ public class ActivityLogin extends AppCompatActivity {
             Toast.makeText(this, "Por favor, ingrese todos sus datos.", Toast.LENGTH_LONG).show();
         else
         {
-            APIArchivo API = new APIArchivo(this);
+
+            Usuario usuario = API.GET_User_Auth(telefono, contrasena);
+            if (usuario.getNombre().equals(""))
+                Toast.makeText(this, "Contraseña incorrecta. Favor de verificar", Toast.LENGTH_SHORT).show();
+            else
+            {
+                if (checkPreferences.isChecked())
+                    SetPreferences(usuario);
+                Intent intent = new Intent(ActivityLogin.this, MenuPrincipal.class);
+                intent.putExtra("usuario", usuario);
+                startActivity(intent);
+                finish();
+            }
+
+
+            /*APIArchivo API = new APIArchivo(this);
             Usuario usuario = API.GET_Usuario(telefono, contrasena, this);
 
             if (usuario.getNombre().equals("ERROR"))
@@ -48,7 +63,7 @@ public class ActivityLogin extends AppCompatActivity {
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);
                 finish();
-            }
+            }*/
         }
     }
 
