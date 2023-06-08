@@ -116,14 +116,15 @@
             android:text="@string/transporteV"
             android:textColor="@color/azul_letras" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtTransporteInfo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_height="40dp"
+            android:backgroundTint="#00FFFFFF"
+            android:hint="-"
             android:paddingLeft="15dp"
-            android:paddingTop="10dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -147,15 +148,18 @@
             android:text="@string/cantidadDias"
             android:textColor="@color/azul_letras" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtCantDiasInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:hint="0"
+            android:inputType="number"
+            android:paddingTop="5dp"
             android:paddingRight="25dp"
-            android:textSize="45dp"
             android:textAlignment="textEnd"
-            android:text="4"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="45dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -178,15 +182,18 @@
             android:text="@string/cantidadBoletos"
             android:textColor="@color/azul_letras" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtCantBoletosInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:hint="0"
+            android:inputType="number"
+            android:paddingTop="5dp"
             android:paddingRight="25dp"
-            android:textSize="45dp"
             android:textAlignment="textEnd"
-            android:text="4"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="45dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -211,11 +218,21 @@
         <TextView
             android:id="@+id/txtFechaInfo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_height="40dp"
+            android:backgroundTint="#00FFFFFF"
             android:paddingLeft="15dp"
-            android:paddingTop="10dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btnredondoazul"
+            android:onClick="fecha"
+            android:text="@string/fechaBtn"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

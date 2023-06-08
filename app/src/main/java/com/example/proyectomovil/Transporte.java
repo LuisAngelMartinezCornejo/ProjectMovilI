@@ -1,6 +1,8 @@
 package com.example.proyectomovil;
 
-public class Transporte {
+import java.io.Serializable;
+
+public class Transporte implements Serializable {
     private String tipo;
     private String empresa;
     private String marca;

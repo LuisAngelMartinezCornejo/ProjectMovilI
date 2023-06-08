@@ -10,12 +10,16 @@ import android.widget.TextView;
 public class ConfirmacionViaje extends AppCompatActivity {
 
     TextView idViaje, destino, transporte, fecha, dias, asientos, reservacionNombre;
+    Viaje viaje;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacion_viaje);
 
+        intent = getIntent();
+        viaje = (Viaje) intent.getSerializableExtra("viaje");
 
         idViaje = (TextView) findViewById(R.id.txtIDViaje);
         destino = (TextView) findViewById(R.id.txtDestino);
@@ -25,17 +29,16 @@ public class ConfirmacionViaje extends AppCompatActivity {
         asientos = (TextView) findViewById(R.id.txtAsientos);
         reservacionNombre = (TextView) findViewById(R.id.txtReservacion);
 
-        idViaje.setText(String.valueOf(Comun.user.viajesUsuario.getId()));
-        destino.setText(Comun.user.viajesUsuario.getLugar().getCiudad());
-        transporte.setText(Comun.user.viajesUsuario.getTransporte().getTipo());
-        fecha.setText(Comun.user.viajesUsuario.getFecha().toString());
-        dias.setText(String.valueOf(Comun.user.viajesUsuario.getDiasEstancia()));
-        asientos.setText(Comun.user.viajesUsuario.getAsientos());
-        reservacionNombre.setText(Comun.user.viajesUsuario.getNombreReserva());
-
-        Comun.MisViajes.add(Comun.user.viajesUsuario);
+        idViaje.setText(String.valueOf(viaje.getId()));
+        destino.setText(viaje.getLugar().getCiudad());
+        transporte.setText(viaje.getTransporte().getTipo());
+        fecha.setText(viaje.getFecha().toString());
+        dias.setText(String.valueOf(viaje.getDiasEstancia()));
+        asientos.setText(viaje.getAsientos());
+        reservacionNombre.setText(viaje.getNombreReserva());
     }
 
+    // MANDAR A LA ACTIVITY DE DESCUENTO Y ENVIAR EL OBJETO TIPO VIAJE PARA EN DESCUENTOS ENVIAR EL VIAJE A LA BD
     public void entendido(View view){
         finish();
     }

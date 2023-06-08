@@ -1,6 +1,8 @@
 package com.example.proyectomovil;
 
-public class Lugar {
+import java.io.Serializable;
+
+public class Lugar implements Serializable {
     private int id;
     private String ciudad;
     private String estado;

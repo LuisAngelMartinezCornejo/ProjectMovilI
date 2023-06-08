@@ -10,6 +10,10 @@ import java.util.Random;
 
 
 public class SeleccionAsientos extends AppCompatActivity {
+
+    Viaje viaje;
+    Intent intent;
+
     Button avanzar;
     String asientos="";
     Button btnAsiento1;
@@ -39,9 +43,10 @@ public class SeleccionAsientos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_asientos);
 
+        intent = getIntent();
+        viaje = (Viaje) intent.getSerializableExtra("viaje");
 
-
-        for(int i = 0; i<selected.length; i++){
+        for(int i = 0; i < selected.length; i++){
             selected[i] = 0;
         }
 
@@ -95,11 +100,11 @@ public class SeleccionAsientos extends AppCompatActivity {
         avanzar.setOnClickListener(view -> {
             Comun.user.viajesUsuario.setAsientos(asientos);
             Intent p = new Intent(this,ConfirmacionViaje.class);
+            viaje.setAsientos(asientos);
+            p.putExtra("viaje", viaje);
             startActivity(p);
             finish();
         });
-
-
     }
 
     private void funcs(int num) {

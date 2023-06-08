@@ -92,8 +92,6 @@ public class NuevoViaje extends AppCompatActivity  {
             public void onClick(View view) {
                 Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
                 v = viajes.get(getLayoutPosition());
-                //Toast.makeText(NuevoViaje.this,"dsfa",Toast.LENGTH_LONG).show();
-
                 Comun.user.setViajesUsuario(v);
                 startActivity(i);
                 finish();
