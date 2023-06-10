@@ -94,20 +94,20 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                         Toast.LENGTH_SHORT).show();
             }
         });
-        //imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
-       // imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+        imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
 
-         //   public View makeView() {
-          //      return new ImageView(MenuPrincipal.this);
-           // }
-        //});
+            public View makeView() {
+                return new ImageView(MenuPrincipal.this);
+            }
+        });
         // Set animations
         // https://danielme.com/2013/08/18/diseno-android-transiciones-entre-activities/
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
-        //imageSwitcher.setInAnimation(fadeIn);
-        //imageSwitcher.setOutAnimation(fadeOut);
-        //start();
+        imageSwitcher.setInAnimation(fadeIn);
+        imageSwitcher.setOutAnimation(fadeOut);
+        start();
 
     }
 
