@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.proyectomovil.interfaces.RegisterUserCallback;
+import com.example.proyectomovil.interfaces.UpdateUserCallback;
+
 import java.text.MessageFormat;
 
 public class EditarPerfil extends AppCompatActivity {
@@ -43,9 +46,20 @@ public class EditarPerfil extends AppCompatActivity {
         user.setTelefono(Long.parseLong(edtTelefono.getText().toString()));
         user.setDireccion(edtDireccion.getText().toString());
 
-        Intent intent = new Intent(this, MiPerfil.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
-        finish();
+        API.PUT_Update_User(user, this, new UpdateUserCallback() {
+            @Override
+            public void onAnswerCompleted(boolean resultado) {
+                if (resultado)
+                {
+                    Intent intent = new Intent(EditarPerfil.this, MiPerfil.class);
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onAnswerError(String errorMessage) {}
+        });
     }
 }

@@ -57,7 +57,6 @@ public class API {
                     JSONObject result = jsonArray.getJSONObject(0);
 
                     if (phone.equals(result.getString("phone").trim()) && password.equals(result.getString("pass").trim())) {
-                        Toast.makeText(context, result.getString("name"), Toast.LENGTH_SHORT).show();
                         usuario.setNombre(result.getString("name"));
                         usuario.setIDUser(result.getInt("iduser"));
                         usuario.setCorreo(result.getString("mail"));
@@ -145,6 +144,46 @@ public class API {
                     {
                         int statusCode = response.statusCode;
                         if (statusCode == 201)
+                            callback.onAnswerCompleted(true);
+                        else
+                            callback.onAnswerError("Operation failed");
+                        return null;
+                    }
+                };
+        queue.add(request);
+    }
+
+    public static void PUT_Update_User(Usuario usuario, Context context, UpdateUserCallback callback)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_UPDATE_USER_INFO;
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("NAME", usuario.getNombre());
+            requestObject.put("MAIL", usuario.getCorreo());
+            requestObject.put("DIRECTION", usuario.getDireccion());
+            requestObject.put("PHONE", usuario.getTelefono());
+            requestObject.put("IDUSER", usuario.getIDUser());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, requestString, requestObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                })
+                {
+                    @Override
+                    protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
+                    {
+                        int statusCode = response.statusCode;
+                        if (statusCode == 200)
                             callback.onAnswerCompleted(true);
                         else
                             callback.onAnswerError("Operation failed");

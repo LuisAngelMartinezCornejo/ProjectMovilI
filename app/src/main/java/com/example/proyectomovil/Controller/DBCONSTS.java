@@ -22,6 +22,6 @@ public class DBCONSTS {
     public static String URL_DELETE_MY_TRIP = baseRoute + "/api/trips/mytrips/drop/";
 
     // PUT
-    public static String URL_UPDATE_USER_INFO = baseRoute + "/users/update";
+    public static String URL_UPDATE_USER_INFO = baseRoute + "/api/users/update/";
 
 }
