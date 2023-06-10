@@ -9,6 +9,8 @@ public class Transporte implements Serializable {
     private String registro;
     private String conductor;
 
+    public Transporte(){}
+
     public Transporte(String tipo, String empresa, String marca, String registro, String conductor) {
         this.tipo = tipo;
         this.empresa = empresa;

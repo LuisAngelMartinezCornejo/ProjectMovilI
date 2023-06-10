@@ -17,6 +17,8 @@ public class Lugar implements Serializable {
         this.disponible = disponible;
     }
 
+    public Lugar(){}
+
     public int getId() {
         return id;
     }
