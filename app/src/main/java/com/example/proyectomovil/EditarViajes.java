@@ -71,18 +71,15 @@ public class EditarViajes extends AppCompatActivity {
 
 
     public void cancelarViaje(View view) {
+        Toast.makeText(this,"entré al found",  Toast.LENGTH_SHORT);
         if(found){
-            Toast.makeText(this,"entré al found",  Toast.LENGTH_SHORT);
             API.DELETE_MyTrip(IDaux, usuario.getIDUser(), this, new RegisterSeatCallback() {
                 @Override
                 public void onAnswerCompleted(boolean completado) {
-                    //viajes.remove(index);
-                    Toast.makeText(EditarViajes.this, "Viaje removido >:)", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onAnswerError(String errorMessage) {
-                    Toast.makeText(EditarViajes.this, "Morí", Toast.LENGTH_SHORT).show();
                 }
             });
             Intent intent = new Intent(this, MisViajes.class);
