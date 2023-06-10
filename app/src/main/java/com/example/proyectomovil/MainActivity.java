@@ -23,19 +23,23 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent i;
                 if(estaRegistrado()){
+                    String telefono = getTelefonoPreferences();
+                    API.GET_User(telefono, MainActivity.this, new UserCallback() {
+                        @Override
+                        public void onAnswerCompleted(Usuario user) {
+                            Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
+                            intent.putExtra("usuario", user);
+                            startActivity(intent);
+                            finish();
+                        }
 
-                    APIArchivo API = new APIArchivo(getApplicationContext());
-                    Usuario usuario = API.GET_Usuario_Telefono(getTelefonoPreferences(), getApplicationContext());
-                    if (usuario.getNombre().equals("NOTFOUND"))
-                    {
-                        Toast.makeText(MainActivity.this, "Favor de iniciar sesión nuevamente", Toast.LENGTH_SHORT).show();
-                        i = new Intent(MainActivity.this, ActivityLogin.class);
-                    }
-                    else
-                    {
-                        i = new Intent(MainActivity.this, MenuPrincipal.class);
-                        i.putExtra("usuario", usuario);
-                    }
+                        @Override
+                        public void onAnswerError(String errorMessage) {
+                            Intent intent = new Intent(MainActivity.this, ActivityLogin.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }else{
                     i = new Intent(MainActivity.this, ActivityLogin.class);
                 }
