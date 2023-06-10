@@ -30,6 +30,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
         DrawerLayout.DrawerListener {
     private DrawerLayout drawerLayout;
     private ImageSwitcher imageSwitcher;
+
     private int[] gallery = { R.drawable.a, R.drawable.b, R.drawable.d, R.drawable.e};
 
     private int position = 0;
@@ -156,8 +157,8 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                 return true;
             case R.id.nav_crear_viaje:
                 Intent inv = new Intent(this,NuevoViaje.class);
-                Comun.user = usuario;
-                inv.putExtra("usuario", usuario);
+                inv.putExtra("user", usuario);
+                //Comun.user = usuario;
                 startActivity(inv);
                 return true;
             case R.id.nav_mis_viaje:

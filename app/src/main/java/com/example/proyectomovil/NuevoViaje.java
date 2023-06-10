@@ -17,16 +17,19 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyectomovil.interfaces.AllTripsCallback;
+import com.example.proyectomovil.interfaces.AuthCallback;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class NuevoViaje extends AppCompatActivity  {
+    private Usuario user = new Usuario();
 
-    ArrayList<Viaje> viajes = new ArrayList<>();
+    static ArrayList<Viaje> viajesChido = new ArrayList<>();
     RecyclerView rvViajes;
     TextView txtDestino;
     AdaptadorViaje av;
-    private Usuario usuario;
 
     Lugar vallarta = new Lugar(2, "Vallarta", "Jalisco", "México", true);
     Lugar cabos = new Lugar(3, "Cabos", "Baja California Sur", "México", true);
@@ -44,19 +47,27 @@ public class NuevoViaje extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_viaje);
 
-        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+        user = (Usuario) getIntent().getSerializableExtra("user");
 
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
-        viajes = new ArrayList<Viaje>();
-        viajes.add(new Viaje(1, cancun, avion, viajeCancun, 7, "4", Comun.user.getNombre()));
-        viajes.add(new Viaje(2, vallarta, camion, viajeTokio, 5, "2", Comun.user.getNombre()));
-        viajes.add(new Viaje(3, cabos, apata, viajeTokio, 9, "5", Comun.user.getNombre()));
-        viajes.add(new Viaje(4, tokio, avion, viajeCancun, 15, "2", Comun.user.getNombre()));
-
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvViajes.setLayoutManager(llm);
         av = new AdaptadorViaje();
         rvViajes.setAdapter(av);
+
+        API.GET_All_Trips(this,new AllTripsCallback() {
+
+            @Override
+            public void onAnswerCompleted(ArrayList<Viaje> viajes) {
+                viajesChido.addAll(viajes);
+                av.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onAnswerError(String errorMessage) {
+                Toast.makeText(NuevoViaje.this, errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private class AdaptadorViaje extends RecyclerView.Adapter<AdaptadorViaje.AdaptadorViajeHolder> {
@@ -74,7 +85,7 @@ public class NuevoViaje extends AppCompatActivity  {
 
         @Override
         public int getItemCount() {
-            return viajes.size();
+            return viajesChido.size();
         }
 
 
@@ -88,15 +99,15 @@ public class NuevoViaje extends AppCompatActivity  {
             }
 
             public void imprimir(int position){
-                txtDestino.setText(viajes.get(position).getLugar().getCiudad());
+                txtDestino.setText(viajesChido.get(position).getLugar().getCiudad());
             }
             Viaje v;
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(NuevoViaje.this, PantallaViaje.class);
-                v = viajes.get(getLayoutPosition());
-                Comun.user.setViajesUsuario(v);
-                i.putExtra("usuario", usuario);
+                Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
+                v = viajesChido.get(getLayoutPosition());
+                user.setViajesUsuario(v);
+                i.putExtra("user", user);
                 startActivity(i);
                 finish();
             }
