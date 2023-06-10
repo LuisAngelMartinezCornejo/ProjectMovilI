@@ -106,8 +106,8 @@ public class NuevoViaje extends AppCompatActivity  {
             public void onClick(View view) {
                 Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
                 v = viajesChido.get(getLayoutPosition());
-                i.putExtra("user", user);
                 user.setViajesUsuario(v);
+                i.putExtra("user", user);
                 startActivity(i);
                 finish();
             }
