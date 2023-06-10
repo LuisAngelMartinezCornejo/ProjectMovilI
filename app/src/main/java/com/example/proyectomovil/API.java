@@ -3,34 +3,21 @@ package com.example.proyectomovil;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.proyectomovil.Controller.DBCONSTS;
+import com.example.proyectomovil.interfaces.AuthCallback;
+import com.example.proyectomovil.interfaces.VolleyCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Map;
-
 public class API {
-
-    public interface VolleyCallback
-    {
-        void onSuccess(JSONObject response);
-        void onError(String errorMessage);
-    }
 
     private static void GET_User_Auth_private(String phone, String password, VolleyCallback callback, Context context)
     {
@@ -55,12 +42,6 @@ public class API {
                 });
         queue.add(request);
     }
-
-    public interface AuthCallback {
-        void onUserAuthCompleted(Usuario usuario);
-        void onAuthError(String errorMessage);
-    }
-
     public static void GET_User_Auth(String phone, String password, Context context, AuthCallback callback) {
         Usuario usuario = new Usuario();
         usuario.setNombre("");

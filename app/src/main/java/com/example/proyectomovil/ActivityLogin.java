@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectomovil.interfaces.AuthCallback;
+
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -33,8 +35,7 @@ public class ActivityLogin extends AppCompatActivity {
             Toast.makeText(this, "Por favor, ingrese todos sus datos.", Toast.LENGTH_LONG).show();
         else
         {
-
-            API.GET_User_Auth(telefono, contrasena, this, new API.AuthCallback() {
+            API.GET_User_Auth(telefono, contrasena, this, new AuthCallback() {
                 @Override
                 public void onUserAuthCompleted(Usuario usuario) {
                     if (usuario.getNombre().equals(""))
@@ -55,23 +56,6 @@ public class ActivityLogin extends AppCompatActivity {
                     Toast.makeText(ActivityLogin.this, errorMessage, Toast.LENGTH_SHORT).show();
                 }
             });
-
-            /*APIArchivo API = new APIArchivo(this);
-            Usuario usuario = API.GET_Usuario(telefono, contrasena, this);
-
-            if (usuario.getNombre().equals("ERROR"))
-                Toast.makeText(this, "Contraseña incorrecta. Favor de verificar", Toast.LENGTH_SHORT).show();
-            else if (usuario.getNombre().equals("NOTFOUND"))
-                Toast.makeText(this, "Usuario inexistente. Favor de verificar", Toast.LENGTH_SHORT).show();
-            else
-            {
-                if (checkPreferences.isChecked())
-                    SetPreferences(usuario);
-                Intent intent = new Intent(ActivityLogin.this, MenuPrincipal.class);
-                intent.putExtra("usuario", usuario);
-                startActivity(intent);
-                finish();
-            }*/
         }
     }
 
