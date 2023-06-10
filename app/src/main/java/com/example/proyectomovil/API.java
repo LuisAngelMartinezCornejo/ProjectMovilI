@@ -192,4 +192,42 @@ public class API {
                 };
         queue.add(request);
     }
+
+    public static void GET_My_Trips(int IDUser, Context context, MyTripsCallback callback)
+    {
+        {
+            RequestQueue queue = Volley.newRequestQueue(context);
+            String requestString = DBCONSTS.URL_MY_TRIPS + IDUser;
+            StringRequest request = new StringRequest(Request.Method.GET, requestString,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject JSONResponse = new JSONObject(response);
+                                JSONArray jsonArray = JSONResponse.getJSONArray("items");
+
+                                ArrayList<Viaje> misViajes = new ArrayList<>();
+                                for (int i = 0; i < jsonArray.length(); i++)
+                                {
+                                    JSONObject objeto = jsonArray.getJSONObject(i);
+                                    misViajes.add(new Viaje(
+                                            objeto.getInt("idmytrip"),
+                                            objeto.getString("city"),
+                                            objeto.getString("departuredate")));
+                                }
+                                callback.onAnswerCompleted(misViajes);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                callback.onAnswerError(e.getMessage());
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {}
+                    });
+            queue.add(request);
+
+        }
+    }
 }
