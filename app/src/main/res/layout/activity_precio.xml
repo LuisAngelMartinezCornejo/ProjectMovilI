@@ -1,42 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:background="#A1C4E6"
     tools:context=".PrecioActivity">
 
     <TextView
-        android:id="@+id/textView35"
-        android:layout_width="286dp"
-        android:layout_height="39dp"
+        android:id="@+id/txtPrecioActual"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/fondoredondoblanco"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
         android:text="Precio "
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="38dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="216dp"
-        android:layout_height="41dp"
-        android:text="Confirmar"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
     <TextView
-        android:id="@+id/textView37"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
+        android:id="@+id/txtPrecioDescuento"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/fondoredondoblanco"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
         android:text="Total"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="259dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
     <Button
         android:id="@+id/button8"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btnredondoazul"
+        android:onClick="escanear"
+        android:text="@string/escanear"
+        app:layout_constraintStart_toEndOf="@+id/textView35"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecioDescuento" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="245dp"
+
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btnredondoazul"
+        android:onClick="confirmarCompra"
+        android:text="@string/confirmarCompra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="281dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/descuentoPagina"
+        android:textColor="@color/darkgray"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Código"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="169dp" />
-</LinearLayout>
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="@string/precioActual"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="32dp"
+        android:textStyle="bold"
+        android:text="@string/precioDescuento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecioActual" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="48dp"
+        android:textStyle="bold"
+        android:text="@string/tengoCodigo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecioDescuento" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="155dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/discount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

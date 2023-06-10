@@ -38,7 +38,7 @@ public class ConfirmacionViaje extends AppCompatActivity {
         reservacionNombre.setText(viaje.getNombreReserva());
     }
 
-    // MANDAR A LA ACTIVITY DE DESCUENTO Y ENVIAR EL OBJETO TIPO VIAJE PARA EN DESCUENTOS ENVIAR EL VIAJE A LA BD
+    // MANDAR A LA ACTIVITY DE INICIO Y ENVIAR EL OBJETO TIPO VIAJE PARA EN DESCUENTOS ENVIAR EL VIAJE A LA BD
     public void entendido(View view){
         finish();
     }

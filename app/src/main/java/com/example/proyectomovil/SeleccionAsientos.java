@@ -99,7 +99,7 @@ public class SeleccionAsientos extends AppCompatActivity {
 
         avanzar.setOnClickListener(view -> {
             Comun.user.viajesUsuario.setAsientos(asientos);
-            Intent p = new Intent(this,ConfirmacionViaje.class);
+            Intent p = new Intent(this, PrecioActivity.class);
             viaje.setAsientos(asientos);
             p.putExtra("viaje", viaje);
             startActivity(p);

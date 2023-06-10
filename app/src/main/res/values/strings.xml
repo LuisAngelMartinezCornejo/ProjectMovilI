@@ -80,4 +80,11 @@
     <string name="ingTelefono">Ingresa el teléfono</string>
     <string name="ingDireccion">Ingresa la dirección</string>
     <string name="fechaBtn">Escoge una fecha</string>
+    <string name="descuentoPagina">¡Ingresa un descuento!</string>
+    <string name="precioActual">Precio actual</string>
+    <string name="precioDescuento">Precio con descuento</string>
+    <string name="tengoCodigo">Tengo un código</string>
+    <string name="notengoCodigo">No tengo código</string>
+    <string name="escanear">Escanear</string>
+    <string name="confirmarCompra">Confirmar compra</string>
 </resources>
