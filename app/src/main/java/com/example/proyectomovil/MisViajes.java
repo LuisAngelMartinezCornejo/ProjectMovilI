@@ -81,12 +81,22 @@ MisViajes extends AppCompatActivity {
                 }
 
             }
-
+            Viaje v;
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(MisViajes.this,MapaActivity.class);
+                v = viajes.get(getLayoutPosition());
+                //Toast.makeText(NuevoViaje.this,"dsfa",Toast.LENGTH_LONG).show();
+
+                Comun.user.setViajesUsuario(v);
+                startActivity(i);
+                finish();
             }
         }
     }
+
+
+
 
     public void CancelarViaje(View view){
         Intent intent = new Intent(this, EditarViajes.class);

@@ -79,4 +79,5 @@
     <string name="ingCorreo">Ingresa el correo</string>
     <string name="ingTelefono">Ingresa el teléfono</string>
     <string name="ingDireccion">Ingresa la dirección</string>
+
 </resources>
