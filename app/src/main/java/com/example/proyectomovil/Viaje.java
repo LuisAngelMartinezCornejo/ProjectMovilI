@@ -17,7 +17,7 @@ public class Viaje implements Serializable {
     public Viaje () {
     }
 
-    public Viaje (int id, String fecha, String ciudad) {
+    public Viaje (int id, String ciudad, String fecha) {
         this.id = id;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         try {

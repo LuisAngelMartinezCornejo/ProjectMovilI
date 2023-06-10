@@ -213,7 +213,7 @@ public class API {
                                     misViajes.add(new Viaje(
                                             objeto.getInt("idmytrip"),
                                             objeto.getString("city"),
-                                            objeto.getString("departuredate")));
+                                            objeto.getString("mydeparturedate")));
                                 }
                                 callback.onAnswerCompleted(misViajes);
                             } catch (JSONException e) {

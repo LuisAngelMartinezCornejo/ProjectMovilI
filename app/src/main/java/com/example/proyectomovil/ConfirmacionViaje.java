@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.proyectomovil.interfaces.AllTripsCallback;
 import com.example.proyectomovil.interfaces.RegisterMyTripCallback;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,10 +60,10 @@ public class ConfirmacionViaje extends AppCompatActivity {
         idViaje.setText(String.valueOf(viaje.getId()));
         destino.setText(viaje.getLugar().getCiudad());
         transporte.setText(viaje.getTransporte().getTipo());
-        fecha.setText(viaje.getFecha().toString());
+
         dias.setText(String.valueOf(viaje.getDiasEstancia()));
         asientos.setText(viaje.getAsientos());
-        reservacionNombre.setText(viaje.getNombreReserva());
+        reservacionNombre.setText(usuario.getNombre());
 
         String originalDateString = viaje.getFecha().toString();
 
@@ -71,13 +72,18 @@ public class ConfirmacionViaje extends AppCompatActivity {
 
         SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+        Date originalDate = null;
+
         try {
-            Date originalDate = originalFormat.parse(originalDateString);
-            String targetDateString = targetFormat.format(originalDate);
-            System.out.println(targetDateString);
-        } catch (Exception e) {
-            e.printStackTrace();
+            originalDate = originalFormat.parse(originalDateString);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
+        assert originalDate != null;
+        targetDateString = targetFormat.format(originalDate);
+        System.out.println(targetDateString);
+
+        fecha.setText(targetDateString);
     }
 
     private void setPendingIntentInicio() {
@@ -117,7 +123,7 @@ public class ConfirmacionViaje extends AppCompatActivity {
     // MOSTRAR LA NOTIFICACION Y ENVIAR EL OBJETO TIPO VIAJE ENVIAR EL VIAJE A LA BD
     public void entendido(View view){
         API.POST_Register_Trip(usuario.getIDUser(), viaje.getId(), viaje.getDiasEstancia(), viaje.getAsientos(),
-                viaje.getNombreReserva(), targetDateString, this,new RegisterMyTripCallback() {
+                usuario.getNombre(), targetDateString, this,new RegisterMyTripCallback() {
 
                     @Override
                     public void onAnswerCompleted(boolean completado) {
