@@ -7,6 +7,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.proyectomovil.interfaces.AuthCallback;
+import com.example.proyectomovil.interfaces.UserCallback;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,25 +24,29 @@ public class MainActivity extends AppCompatActivity {
         TimerTask tarea = new TimerTask() {
             @Override
             public void run() {
-                Intent i;
                 if(estaRegistrado()){
-                    APIArchivo API = new APIArchivo(getApplicationContext());
-                    Usuario usuario = API.GET_Usuario_Telefono(getTelefonoPreferences(), getApplicationContext());
-                    if (usuario.getNombre().equals("NOTFOUND"))
-                    {
-                        Toast.makeText(MainActivity.this, "Favor de iniciar sesión nuevamente", Toast.LENGTH_SHORT).show();
-                        i = new Intent(MainActivity.this, ActivityLogin.class);
-                    }
-                    else
-                    {
-                        i = new Intent(MainActivity.this, MenuPrincipal.class);
-                        i.putExtra("usuario", usuario);
-                    }
+                    String telefono = getTelefonoPreferences();
+                    API.GET_User(telefono, MainActivity.this, new UserCallback() {
+                        @Override
+                        public void onAnswerCompleted(Usuario user) {
+                            Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
+                            intent.putExtra("usuario", user);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void onAnswerError(String errorMessage) {
+                            Intent intent = new Intent(MainActivity.this, ActivityLogin.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }else{
-                    i = new Intent(MainActivity.this, ActivityLogin.class);
+                    Intent i = new Intent(MainActivity.this, ActivityLogin.class);
+                    startActivity(i);
+                    finish();
                 }
-                startActivity(i);
-                finish();
             }
         };
         Timer tiempo = new Timer();

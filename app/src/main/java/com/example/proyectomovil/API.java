@@ -273,4 +273,39 @@ public class API {
         };
         queue.add(request);
     }
+
+    public static void GET_User(String phone, Context context, UserCallback callback)
+    {
+        {
+            RequestQueue queue = Volley.newRequestQueue(context);
+            String requestString = DBCONSTS.URL_AUTH + phone;
+            StringRequest request = new StringRequest(Request.Method.GET, requestString,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject JSONResponse = new JSONObject(response);
+                                JSONArray jsonArray = JSONResponse.getJSONArray("items");
+
+                                JSONObject objeto = jsonArray.getJSONObject(0);
+                                Usuario usuario = new Usuario();
+                                usuario.setNombre(objeto.getString("name"));
+                                usuario.setIDUser(objeto.getInt("iduser"));
+                                usuario.setCorreo(objeto.getString("mail"));
+                                usuario.setTelefono(Long.parseLong(objeto.getString("phone")));
+                                usuario.setDireccion(objeto.getString("direction"));
+                                callback.onAnswerCompleted(usuario);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                callback.onAnswerError(e.getMessage());
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {}
+                    });
+            queue.add(request);
+        }
+    }
 }
