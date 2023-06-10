@@ -34,19 +34,27 @@ public class ActivityLogin extends AppCompatActivity {
         else
         {
 
-            Usuario usuario = API.GET_User_Auth(telefono, contrasena, this);
-            if (usuario.getNombre().equals(""))
-                Toast.makeText(this, "Contraseña incorrecta. Favor de verificar", Toast.LENGTH_SHORT).show();
-            else
-            {
-                if (checkPreferences.isChecked())
-                    SetPreferences(usuario);
-                Intent intent = new Intent(ActivityLogin.this, MenuPrincipal.class);
-                intent.putExtra("usuario", usuario);
-                startActivity(intent);
-                finish();
-            }
+            API.GET_User_Auth(telefono, contrasena, this, new API.AuthCallback() {
+                @Override
+                public void onUserAuthCompleted(Usuario usuario) {
+                    if (usuario.getNombre().equals(""))
+                        Toast.makeText(ActivityLogin.this, "Contraseña incorrecta. Favor de verificar", Toast.LENGTH_SHORT).show();
+                    else
+                    {
+                        if (checkPreferences.isChecked())
+                            SetPreferences(usuario);
+                        Intent intent = new Intent(ActivityLogin.this, MenuPrincipal.class);
+                        intent.putExtra("usuario", usuario);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
 
+                @Override
+                public void onAuthError(String errorMessage) {
+                    Toast.makeText(ActivityLogin.this, errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
 
             /*APIArchivo API = new APIArchivo(this);
             Usuario usuario = API.GET_Usuario(telefono, contrasena, this);

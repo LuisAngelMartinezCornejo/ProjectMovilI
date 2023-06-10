@@ -56,44 +56,44 @@ public class API {
         queue.add(request);
     }
 
-    public static Usuario GET_User_Auth(String phone, String password, Context context)
-    {
+    public interface AuthCallback {
+        void onUserAuthCompleted(Usuario usuario);
+        void onAuthError(String errorMessage);
+    }
+
+    public static void GET_User_Auth(String phone, String password, Context context, AuthCallback callback) {
         Usuario usuario = new Usuario();
         usuario.setNombre("");
 
-        GET_User_Auth_private(phone, password,new VolleyCallback() {
-
+        GET_User_Auth_private(phone, password, new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject response) {
                 JSONArray jsonArray = null;
                 try {
                     jsonArray = response.getJSONArray("items");
-
-
                     JSONObject result = jsonArray.getJSONObject(0);
 
-                    if (phone.equals(result.getString("phone").trim()))
-                    {
-                        if (password.equals(result.getString("password").trim()))
-                        {
-                            Toast.makeText(context, result.getString("nombre"), Toast.LENGTH_SHORT).show();
-                            usuario.setNombre(result.getString("nombre"));
-                            usuario.setIDUser(result.getInt("iduser"));
-                            usuario.setCorreo(result.getString("mail"));
-                            usuario.setTelefono(Long.parseLong(result.getString("phone")));
-                            usuario.setDireccion(result.getString("direction"));
-                        }
+                    if (phone.equals(result.getString("phone").trim()) && password.equals(result.getString("pass").trim())) {
+                        Toast.makeText(context, result.getString("name"), Toast.LENGTH_SHORT).show();
+                        usuario.setNombre(result.getString("name"));
+                        usuario.setIDUser(result.getInt("iduser"));
+                        usuario.setCorreo(result.getString("mail"));
+                        usuario.setTelefono(Long.parseLong(result.getString("phone")));
+                        usuario.setDireccion(result.getString("direction"));
                     }
+
+                    callback.onUserAuthCompleted(usuario);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    callback.onAuthError(e.getMessage());
                 }
             }
 
             @Override
             public void onError(String errorMessage) {
-
+                callback.onAuthError(errorMessage);
             }
-        },  context);
-        return usuario;
+        }, context);
     }
+
 }
