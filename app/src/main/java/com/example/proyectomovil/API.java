@@ -77,10 +77,10 @@ public class API {
         }, context);
     }
 
-    public static void GET_All_Trips(int IDUser, Context context, AllTripsCallback callback)
+    public static void GET_All_Trips(Context context, AllTripsCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String requestString = DBCONSTS.URL_ALL_TRIPS + IDUser;
+        String requestString = DBCONSTS.URL_ALL_TRIPS;
         StringRequest request = new StringRequest(Request.Method.GET, requestString,
                 new Response.Listener<String>() {
                     @Override

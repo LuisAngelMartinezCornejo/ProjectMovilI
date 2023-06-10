@@ -21,18 +21,19 @@ import java.util.Date;
 
 public class PantallaViaje extends AppCompatActivity {
 
-    Usuario user;
     Viaje viaje;
     Viaje auxViaje;
     Date fechaViaje;
     TextView destino, id, transporte, cantidadDias, cantidadBoletos, fecha;
+
+    private Usuario user = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_viaje);
 
-        user = Comun.user;
+        user = (Usuario) getIntent().getSerializableExtra("user");
         viaje  = user.getViajesUsuario();
 
         destino = (TextView) findViewById(R.id.txtDestinoInfo);
