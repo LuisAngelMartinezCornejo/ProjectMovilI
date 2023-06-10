@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".PrecioActivity">
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="286dp"
+        android:layout_height="39dp"
+        android:text="Precio "
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="216dp"
+        android:layout_height="41dp"
+        android:text="Confirmar"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
+        android:text="Total"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="259dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="169dp" />
+</LinearLayout>

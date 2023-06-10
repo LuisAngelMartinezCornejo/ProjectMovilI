@@ -13,15 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMovil"
         tools:targetApi="31">
-        <activity android:name=".SeleccionAsientos"
-            android:exported="false"
-            />
-        <activity android:name=".PantallaViaje"
-            android:exported="false"
-            />
-        <activity android:name=".NuevoViaje"
-            android:exported="false"
-            />
+        <activity
+            android:name=".PrecioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SeleccionAsientos"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaViaje"
+            android:exported="false" />
+        <activity
+            android:name=".NuevoViaje"
+            android:exported="false" />
         <activity
             android:name=".ConfirmacionViaje"
             android:exported="false" />
