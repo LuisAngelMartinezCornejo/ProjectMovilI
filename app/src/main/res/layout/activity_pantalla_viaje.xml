@@ -116,13 +116,12 @@
             android:text="@string/transporteV"
             android:textColor="@color/azul_letras" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtTransporteInfo"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:backgroundTint="#00FFFFFF"
-            android:hint="-"
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

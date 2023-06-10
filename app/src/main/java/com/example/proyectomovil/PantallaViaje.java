@@ -22,7 +22,6 @@ import java.util.Date;
 public class PantallaViaje extends AppCompatActivity {
 
     Usuario user;
-    ArrayList<Viaje> viajes  = new ArrayList<>();
     Viaje viaje;
     Viaje auxViaje;
     Date fechaViaje;
@@ -44,7 +43,8 @@ public class PantallaViaje extends AppCompatActivity {
         fecha = (TextView) findViewById(R.id.txtFechaInfo);
 
         destino.setText(String.valueOf(viaje.getLugar().getCiudad()));
-        id.setText("1");
+        transporte.setText(viaje.getTransporte().getTipo());
+        id.setText(String.valueOf(viaje.getId()));
     }
 
     public void fecha (View view) {
@@ -75,31 +75,20 @@ public class PantallaViaje extends AppCompatActivity {
     public void siguiente(View view){
         if (!transporte.getText().toString().isEmpty() && !cantidadDias.getText().toString().isEmpty() && !cantidadBoletos.getText().toString().isEmpty() && !fecha.getText().toString().isEmpty()) {
 
-            if (transporte.getText().toString().equals("Avión") || transporte.getText().toString().equals("Camión")) {
-                Transporte auxTransporte = null;
-                if (transporte.getText().toString().equals("Avión")) {
-                    auxTransporte = new Transporte("Avión", "Volaris", "F101", "20310", "Luis Cornejo");
-                } else if (transporte.getText().toString().equals("Camión")) {
-                    auxTransporte = new Transporte("Camión", "Vallarta Plus", "Mercedes", "20312", "Luis Ramos");
-                }
-
-                auxViaje = new Viaje(
-                        Integer.parseInt(id.getText().toString()),
-                        viaje.getLugar(),
-                        auxTransporte,
-                        fechaViaje,
-                        Integer.parseInt(cantidadDias.getText().toString()),
-                        "1",
-                        viaje.getNombreReserva());
+            auxViaje = new Viaje(
+                    viaje.getId(),
+                    viaje.getLugar(),
+                    viaje.getTransporte(),
+                    fechaViaje,
+                    Integer.parseInt(cantidadDias.getText().toString()),
+                    "1",
+                    viaje.getNombreReserva());
 
 
-                Intent intent = new Intent(this, SeleccionAsientos.class);
-                intent.putExtra("viaje", auxViaje);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(this, "Ingresa un transporte válido.", Toast.LENGTH_SHORT).show();
-            }
+            Intent intent = new Intent(this, SeleccionAsientos.class);
+            intent.putExtra("viaje", auxViaje);
+            startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Llena todos los campos.", Toast.LENGTH_SHORT).show();
         }
