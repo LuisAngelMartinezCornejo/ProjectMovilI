@@ -8,7 +8,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectomovil.interfaces.RegisterSeatCallback;
+import com.example.proyectomovil.interfaces.SeatsCallback;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.Random;
 
 
@@ -75,10 +78,6 @@ public class SeleccionAsientos extends AppCompatActivity {
         btnAsiento18 = findViewById(R.id.btnAsiento18);
         btnAsiento19 = findViewById(R.id.btnAsiento19);
         btnAsiento20 = findViewById(R.id.btnAsiento20);
-        funcs(random());
-        funcs(random());
-        funcs(random());
-        funcs(random());
 
         btnAsiento1.setOnClickListener(view->func(btnAsiento1,0));
         btnAsiento2.setOnClickListener(view->func(btnAsiento2,1));
@@ -101,8 +100,46 @@ public class SeleccionAsientos extends AppCompatActivity {
         btnAsiento19.setOnClickListener(view->func(btnAsiento19,18));
         btnAsiento20.setOnClickListener(view->func(btnAsiento20,19));
 
+        Hashtable<Integer, Button> asientosHashtable = new Hashtable<>();
+
+        asientosHashtable.put(1, btnAsiento1);
+        asientosHashtable.put(2, btnAsiento2);
+        asientosHashtable.put(3, btnAsiento3);
+        asientosHashtable.put(4, btnAsiento4);
+        asientosHashtable.put(5, btnAsiento5);
+        asientosHashtable.put(6, btnAsiento6);
+        asientosHashtable.put(7, btnAsiento7);
+        asientosHashtable.put(8, btnAsiento8);
+        asientosHashtable.put(9, btnAsiento9);
+        asientosHashtable.put(10, btnAsiento10);
+        asientosHashtable.put(11, btnAsiento11);
+        asientosHashtable.put(12, btnAsiento12);
+        asientosHashtable.put(13, btnAsiento13);
+        asientosHashtable.put(14, btnAsiento14);
+        asientosHashtable.put(15, btnAsiento15);
+        asientosHashtable.put(16, btnAsiento16);
+        asientosHashtable.put(17, btnAsiento17);
+        asientosHashtable.put(18, btnAsiento18);
+        asientosHashtable.put(19, btnAsiento19);
+        asientosHashtable.put(20, btnAsiento20);
+
+        API.GET_Seats(viaje.getId(), this, new SeatsCallback() {
+            @Override
+            public void onAnswerCompleted(int[] asientosOcupados) {
+                for (int i = 0; i < asientosOcupados.length; i++) {
+                    Button btn = asientosHashtable.get(asientosOcupados[i]);
+                    btn.setBackground(getDrawable(R.drawable.btnseleccion));
+                    btn.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void onAnswerError(String errorMessage) {
+
+            }
+        });
+
         avanzar.setOnClickListener(view -> {
-            Comun.user.viajesUsuario.setAsientos(asientos);
             Intent p = new Intent(this, PrecioActivity.class);
             viaje.setAsientos(asientos);
 
@@ -136,83 +173,83 @@ public class SeleccionAsientos extends AppCompatActivity {
         switch (num){
             case 1:
                 btnAsiento1.setEnabled(false);
-                btnAsiento1.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento1.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 2:
                 btnAsiento2.setEnabled(false);
-                btnAsiento2.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento2.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 3:
                 btnAsiento3.setEnabled(false);
-                btnAsiento3.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento3.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 4:
                 btnAsiento4.setEnabled(false);
-                btnAsiento4.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento4.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 5:
                 btnAsiento5.setEnabled(false);
-                btnAsiento5.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento5.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 6:
                 btnAsiento6.setEnabled(false);
-                btnAsiento6.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento6.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 7:
                 btnAsiento7.setEnabled(false);
-                btnAsiento7.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento7.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 8:
                 btnAsiento8.setEnabled(false);
-                btnAsiento8.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento8.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 9:
                 btnAsiento9.setEnabled(false);
-                btnAsiento9.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento9.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 10:
                 btnAsiento10.setEnabled(false);
-                btnAsiento10.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento10.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 11:
                 btnAsiento11.setEnabled(false);
-                btnAsiento11.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento11.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 12:
                 btnAsiento12.setEnabled(false);
-                btnAsiento12.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento12.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 13:
                 btnAsiento13.setEnabled(false);
-                btnAsiento13.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento13.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 14:
                 btnAsiento14.setEnabled(false);
-                btnAsiento14.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento14.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 15:
                 btnAsiento15.setEnabled(false);
-                btnAsiento15.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento15.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 16:
                 btnAsiento16.setEnabled(false);
-                btnAsiento16.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento16.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 17:
                 btnAsiento17.setEnabled(false);
-                btnAsiento17.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento17.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 18:
                 btnAsiento18.setEnabled(false);
-                btnAsiento18.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento18.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 19:
                 btnAsiento19.setEnabled(false);
-                btnAsiento19.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento19.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
             case 20:
                 btnAsiento20.setEnabled(false);
-                btnAsiento20.setBackgroundColor(getResources().getColor(R.color.black));
+                btnAsiento20.setBackgroundColor(getResources().getColor(R.color.darkgray));
                 break;
 
         }

@@ -165,7 +165,7 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void traceRoute(LatLng fromLatLng, LatLng toLatLng) throws IOException {
         List<List<LatLng>> path = new ArrayList<>();
 
-        String urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=" + fromLatLng.latitude + "," + fromLatLng.longitude + "&destination=" + toLatLng.latitude + "," + toLatLng.longitude + "&key=" + getString(R.string.api);
+        String urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=" + fromLatLng.latitude + "," + fromLatLng.longitude + "&destination=" + toLatLng.latitude + "," + toLatLng.longitude + "&key=" + "";
 
         StringRequest directionsRequest = new StringRequest(Request.Method.GET, urlDirections,
                 new Response.Listener<String>() {
