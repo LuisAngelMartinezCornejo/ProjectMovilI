@@ -43,9 +43,8 @@ public class SeleccionAsientos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_asientos);
 
-        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
-
         intent = getIntent();
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
         viaje = (Viaje) intent.getSerializableExtra("viaje");
 
         for(int i = 0; i < selected.length; i++){

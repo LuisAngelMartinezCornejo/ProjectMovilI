@@ -157,7 +157,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                 return true;
             case R.id.nav_crear_viaje:
                 Intent inv = new Intent(this,NuevoViaje.class);
-                inv.putExtra("user", usuario);
+                inv.putExtra("usuario", usuario);
                 //Comun.user = usuario;
                 startActivity(inv);
                 return true;

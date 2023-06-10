@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.proyectomovil">
-    <uses-permission android:name="android.Manifest.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMovil"
-        tools:targetApi="31">
+        tools:targetApi="32">
 
         <activity
             android:name=".MapaActivity"

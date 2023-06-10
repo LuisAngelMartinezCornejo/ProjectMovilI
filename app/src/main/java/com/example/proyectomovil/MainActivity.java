@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent i;
                 if(estaRegistrado()){
+
                     APIArchivo API = new APIArchivo(getApplicationContext());
                     Usuario usuario = API.GET_Usuario_Telefono(getTelefonoPreferences(), getApplicationContext());
                     if (usuario.getNombre().equals("NOTFOUND"))

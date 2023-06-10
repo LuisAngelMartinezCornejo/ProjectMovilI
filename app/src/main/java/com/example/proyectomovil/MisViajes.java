@@ -94,9 +94,6 @@ MisViajes extends AppCompatActivity {
         }
     }
 
-
-
-
     public void CancelarViaje(View view){
         Intent intent = new Intent(this, EditarViajes.class);
         startActivity(intent);

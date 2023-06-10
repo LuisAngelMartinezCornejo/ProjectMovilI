@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class NuevoViaje extends AppCompatActivity  {
-    private Usuario user = new Usuario();
-
+    private Usuario usuario;
+    private Intent intent;
     static ArrayList<Viaje> viajesChido = new ArrayList<>();
     RecyclerView rvViajes;
     TextView txtDestino;
@@ -47,7 +47,8 @@ public class NuevoViaje extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_viaje);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
+        intent = getIntent();
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -106,8 +107,8 @@ public class NuevoViaje extends AppCompatActivity  {
             public void onClick(View view) {
                 Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
                 v = viajesChido.get(getLayoutPosition());
-                user.setViajesUsuario(v);
-                i.putExtra("user", user);
+                usuario.setViajesUsuario(v);
+                i.putExtra("usuario", usuario);
                 startActivity(i);
                 finish();
             }
