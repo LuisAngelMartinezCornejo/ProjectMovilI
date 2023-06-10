@@ -230,4 +230,47 @@ public class API {
 
         }
     }
+
+    public static void POST_Register_Trip(int IDUser, int IDTrip, int daysAmount,
+                                          String seatings, String reservationName, String date,
+                                          Context context, RegisterMyTripCallback callback)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_REGISTER_TRIP;
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("IDUSER", IDUser);
+            requestObject.put("IDTRIP", IDTrip);
+            requestObject.put("DAYSAMOUNT", daysAmount);
+            requestObject.put("SEATINGS", seatings);
+            requestObject.put("RESERVATIONNAME", reservationName);
+            requestObject.put("MYDEPARTUREDATE", date);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestString, requestObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                })
+        {
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
+            {
+                int statusCode = response.statusCode;
+                if (statusCode == 201)
+                    callback.onAnswerCompleted(true);
+                else
+                    callback.onAnswerError("Operation failed");
+                return null;
+            }
+        };
+        queue.add(request);
+    }
 }
