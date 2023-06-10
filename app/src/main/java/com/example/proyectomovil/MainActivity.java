@@ -7,6 +7,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.proyectomovil.interfaces.AuthCallback;
+import com.example.proyectomovil.interfaces.UserCallback;
+
+import com.example.proyectomovil.interfaces.UserCallback;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         TimerTask tarea = new TimerTask() {
             @Override
             public void run() {
-                Intent i;
                 if(estaRegistrado()){
                     String telefono = getTelefonoPreferences();
                     API.GET_User(telefono, MainActivity.this, new UserCallback() {
@@ -41,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }else{
-                    i = new Intent(MainActivity.this, ActivityLogin.class);
+                    Intent i = new Intent(MainActivity.this, ActivityLogin.class);
+                    startActivity(i);
+                    finish();
                 }
-                startActivity(i);
-                finish();
             }
         };
         Timer tiempo = new Timer();
