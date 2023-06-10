@@ -12,7 +12,12 @@ public class Viaje implements Serializable {
     private String asientos;
     private String nombreReserva;
 
-    public Viaje() {
+    public Viaje () {
+    }
+
+    public Viaje (Lugar lugar, Date fecha) {
+        this.lugar = lugar;
+        this.fecha = fecha;
     }
 
     public Viaje(int id, Lugar lugar, Transporte transporte, Date fecha, int diasEstancia, String asientos, String nombreReserva) {
