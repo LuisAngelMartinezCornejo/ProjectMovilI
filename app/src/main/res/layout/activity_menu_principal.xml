@@ -10,7 +10,6 @@
     tools:openDrawer="start"
     >
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,12 +43,17 @@
             android:text="@string/text_menu"/>
 
 
-        <ImageSwitcher
+        <!--<ImageSwitcher
             android:id="@+id/imageSwitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
-        </ImageSwitcher>
+        </ImageSwitcher>-->
 
+        <VideoView
+            android:id="@+id/video_view"
+            android:layout_margin="@dimen/margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

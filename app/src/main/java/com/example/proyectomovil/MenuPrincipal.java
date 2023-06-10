@@ -2,6 +2,8 @@ package com.example.proyectomovil;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,8 +11,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
@@ -40,11 +44,30 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
     private Timer timer = null;
 
     private Usuario usuario;
-
+    protected VideoView videoView;
+    protected MediaController mediaController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        videoView = findViewById(R.id.video_view);
+        mediaController = new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/"
+                + R.raw.video);
+        videoView.setVideoURI(uri);
+        videoView.requestFocus();
+        videoView.start();
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setVolume(0,0);
+            }
+        });
+        //Toast.makeText(this, "Comienza video", Toast.LENGTH_LONG).show();
+        videoView.setMediaController(mediaController);
+
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
@@ -71,20 +94,20 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                         Toast.LENGTH_SHORT).show();
             }
         });
-        imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
-        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+        //imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+       // imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
 
-            public View makeView() {
-                return new ImageView(MenuPrincipal.this);
-            }
-        });
+         //   public View makeView() {
+          //      return new ImageView(MenuPrincipal.this);
+           // }
+        //});
         // Set animations
         // https://danielme.com/2013/08/18/diseno-android-transiciones-entre-activities/
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
-        imageSwitcher.setInAnimation(fadeIn);
-        imageSwitcher.setOutAnimation(fadeOut);
-        start();
+        //imageSwitcher.setInAnimation(fadeIn);
+        //imageSwitcher.setOutAnimation(fadeOut);
+        //start();
 
     }
 
