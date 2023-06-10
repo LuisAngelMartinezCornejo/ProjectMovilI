@@ -116,7 +116,7 @@ public class API {
 
     }
 
-    public static void POST_Register_User(String nombre, String telefono, String contrasena, RegisterUserCallback callback, Context context)
+    public static void POST_Register_User(String nombre, String telefono, String contrasena, Context context, RegisterUserCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
         String requestString = DBCONSTS.URL_REGISTER_USER;
