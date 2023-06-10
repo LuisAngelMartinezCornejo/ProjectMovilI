@@ -26,6 +26,7 @@ public class NuevoViaje extends AppCompatActivity  {
     RecyclerView rvViajes;
     TextView txtDestino;
     AdaptadorViaje av;
+    private Usuario usuario;
 
     Lugar vallarta = new Lugar(2, "Vallarta", "Jalisco", "México", true);
     Lugar cabos = new Lugar(3, "Cabos", "Baja California Sur", "México", true);
@@ -42,6 +43,8 @@ public class NuevoViaje extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_viaje);
+
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         rvViajes = (RecyclerView) findViewById(R.id.rvViajes);
         viajes = new ArrayList<Viaje>();
@@ -90,9 +93,10 @@ public class NuevoViaje extends AppCompatActivity  {
             Viaje v;
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(NuevoViaje.this,PantallaViaje.class);
+                Intent i = new Intent(NuevoViaje.this, PantallaViaje.class);
                 v = viajes.get(getLayoutPosition());
                 Comun.user.setViajesUsuario(v);
+                i.putExtra("usuario", usuario);
                 startActivity(i);
                 finish();
             }

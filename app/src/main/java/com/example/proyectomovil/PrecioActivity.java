@@ -15,6 +15,7 @@ public class PrecioActivity extends AppCompatActivity {
 
     TextView txtPrecioActual, txtPrecioDescuento;
     Viaje viaje;
+    private Usuario usuario;
     Intent intent;
     float descuento = 0;
     float precio = 0;
@@ -27,6 +28,7 @@ public class PrecioActivity extends AppCompatActivity {
 
         intent = getIntent();
         viaje = (Viaje) intent.getSerializableExtra("viaje");
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         txtPrecioActual = findViewById(R.id.txtPrecioActual);
         txtPrecioDescuento = findViewById(R.id.txtPrecioDescuento);
@@ -66,6 +68,7 @@ public class PrecioActivity extends AppCompatActivity {
     public void confirmarCompra (View view) {
         Intent confirmar = new Intent(this, ConfirmacionViaje.class);
         confirmar.putExtra("viaje", viaje);
+        confirmar.putExtra("usuario", usuario);
         startActivity(confirmar);
         finish();
     }

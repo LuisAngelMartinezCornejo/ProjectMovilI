@@ -37,26 +37,26 @@
         android:id="@+id/button8"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/btnredondoazul"
         android:onClick="escanear"
         android:text="@string/escanear"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrecioDescuento" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="245dp"
 
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/btnredondoazul"
         android:onClick="confirmarCompra"
         android:text="@string/confirmarCompra"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintStart_toEndOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecioDescuento" />
 
     <TextView
         android:id="@+id/textView39"
@@ -97,10 +97,10 @@
         android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="48dp"
-        android:textStyle="bold"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="32dp"
         android:text="@string/tengoCodigo"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPrecioDescuento" />
 
@@ -108,10 +108,8 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="155dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button7"
         app:layout_constraintVertical_bias="0.0"

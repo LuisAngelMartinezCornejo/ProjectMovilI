@@ -13,7 +13,7 @@ public class SeleccionAsientos extends AppCompatActivity {
 
     Viaje viaje;
     Intent intent;
-
+    private Usuario usuario;
     Button avanzar;
     String asientos="";
     Button btnAsiento1;
@@ -42,6 +42,8 @@ public class SeleccionAsientos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_asientos);
+
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         intent = getIntent();
         viaje = (Viaje) intent.getSerializableExtra("viaje");
@@ -102,6 +104,7 @@ public class SeleccionAsientos extends AppCompatActivity {
             Intent p = new Intent(this, PrecioActivity.class);
             viaje.setAsientos(asientos);
             p.putExtra("viaje", viaje);
+            p.putExtra("usuario", usuario);
             startActivity(p);
             finish();
         });
