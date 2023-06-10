@@ -2,6 +2,10 @@ plugins {
     id 'com.android.application'
 }
 
+def apiKeyPropertiesFile = rootProject.file("local.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
     compileSdk 32
 
@@ -13,6 +17,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_ROUTE", apiKeyProperties['API_ROUTE'])
     }
 
     buildTypes {

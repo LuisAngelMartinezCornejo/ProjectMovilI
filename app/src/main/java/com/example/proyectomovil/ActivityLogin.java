@@ -34,7 +34,7 @@ public class ActivityLogin extends AppCompatActivity {
         else
         {
 
-            Usuario usuario = API.GET_User_Auth(telefono, contrasena);
+            Usuario usuario = API.GET_User_Auth(telefono, contrasena, this);
             if (usuario.getNombre().equals(""))
                 Toast.makeText(this, "Contraseña incorrecta. Favor de verificar", Toast.LENGTH_SHORT).show();
             else
