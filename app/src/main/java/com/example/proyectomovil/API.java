@@ -315,9 +315,8 @@ public class API {
         String requestString = DBCONSTS.URL_REGISTER_SEAT;
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("SEATNUMBER", seatNumber);
             requestObject.put("IDTRIP", IDTrip);
-
+            requestObject.put("SEATNUMBER", seatNumber);
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -3,8 +3,11 @@ package com.example.proyectomovil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.proyectomovil.interfaces.RegisterSeatCallback;
 
 import java.util.Random;
 
@@ -102,6 +105,26 @@ public class SeleccionAsientos extends AppCompatActivity {
             Comun.user.viajesUsuario.setAsientos(asientos);
             Intent p = new Intent(this, PrecioActivity.class);
             viaje.setAsientos(asientos);
+
+            String[] numbersArrayString = asientos.split(" ");
+            int[] numbersArray = new int[numbersArrayString.length];
+
+            for (int i = 0; i < numbersArray.length; i++) {
+                numbersArray[i] = Integer.parseInt(numbersArrayString[i]);
+            }
+
+            for (int i = 0; i < numbersArray.length; i++) {
+                API.POST_Register_Seat(viaje.getId(), numbersArray[i], this, new RegisterSeatCallback() {
+                    @Override
+                    public void onAnswerCompleted(boolean completado) {
+                    }
+
+                    @Override
+                    public void onAnswerError(String errorMessage) {
+                    }
+                });
+            }
+
             p.putExtra("viaje", viaje);
             p.putExtra("usuario", usuario);
             startActivity(p);
@@ -204,7 +227,11 @@ public class SeleccionAsientos extends AppCompatActivity {
     private void func(Button btnAsiento,int pos) {
         if(selected[pos] == 0){
             selected[pos] = 1;
-            asientos = asientos + " " + String.valueOf(pos+1);
+            if (asientos.equals("")) {
+                asientos = String.valueOf(pos + 1);
+            } else {
+                asientos = asientos + " " + String.valueOf(pos+1);
+            }
             btnAsiento.setBackgroundColor(getResources().getColor(R.color.blue2));
         }else if (selected[pos] == 1){
             selected[pos] = 0;
