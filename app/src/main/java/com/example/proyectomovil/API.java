@@ -418,4 +418,38 @@ public class API {
         };
         queue.add(request);
     }
+
+    public static void GET_Seats(int IDTrip, Context context, SeatsCallback callback)
+    {
+        {
+            RequestQueue queue = Volley.newRequestQueue(context);
+            String requestString = DBCONSTS.URL_SEATS + IDTrip;
+            StringRequest request = new StringRequest(Request.Method.GET, requestString,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject JSONResponse = new JSONObject(response);
+                                JSONArray jsonArray = JSONResponse.getJSONArray("items");
+
+                                int[] asientos = new int[jsonArray.length()];
+                                for (int i = 0; i < jsonArray.length();i++)
+                                {
+                                    JSONObject objeto = jsonArray.getJSONObject(i);
+                                    asientos[i] = objeto.getInt("seatnumber");
+                                }
+                                callback.onAnswerCompleted(asientos);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                callback.onAnswerError(e.getMessage());
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {}
+                    });
+            queue.add(request);
+        }
+    }
 }
