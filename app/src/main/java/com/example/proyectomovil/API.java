@@ -3,10 +3,12 @@ package com.example.proyectomovil;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyectomovil.Controller.DBCONSTS;
@@ -112,5 +114,43 @@ public class API {
                 });
         queue.add(request);
 
+    }
+
+    public static void POST_Register_User(String nombre, String telefono, String contrasena, RegisterUserCallback callback, Context context)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_REGISTER_USER;
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("NAME", nombre);
+            requestObject.put("PHONE", telefono);
+            requestObject.put("PASS", contrasena);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestString, requestObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                })
+                {
+                    @Override
+                    protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
+                    {
+                        int statusCode = response.statusCode;
+                        if (statusCode == 201)
+                            callback.onAnswerCompleted(true);
+                        else
+                            callback.onAnswerError("Operation failed");
+                        return null;
+                    }
+                };
+        queue.add(request);
     }
 }
