@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.proyectomovil.interfaces.MyTripsCallback;
+import com.example.proyectomovil.interfaces.RegisterSeatCallback;
+
 import java.util.ArrayList;
 
 public class EditarViajes extends AppCompatActivity {
@@ -17,6 +20,9 @@ public class EditarViajes extends AppCompatActivity {
     ArrayList<Viaje> viajes = new ArrayList<>();
     TextView showViaje;
     EditText IDViaje;
+    int IDaux;
+    private Usuario usuario;
+    private Intent intent;
 
     int datoABuscar;
     boolean found = false;
@@ -27,7 +33,19 @@ public class EditarViajes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_viajes);
 
-        viajes = Comun.MisViajes;
+        intent = getIntent();
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+
+        API.GET_My_Trips(usuario.getIDUser(), this, new MyTripsCallback() {
+            @Override
+            public void onAnswerCompleted(ArrayList<Viaje> misViajes) {
+                viajes.addAll(misViajes);
+            }
+
+            @Override
+            public void onAnswerError(String errorMessage) {
+            }
+        });
         showViaje = (TextView) findViewById(R.id.showViaje);
         IDViaje = (EditText) findViewById(R.id.edtCodigo);
     }
@@ -38,13 +56,13 @@ public class EditarViajes extends AppCompatActivity {
 
             for (int i = 0; i < viajes.size(); i++){
                 if(viajes.get(i).getId() == datoABuscar){
+                    IDaux = viajes.get(i).getId();
                     showViaje.setText(viajes.get(i).toString());
                     index = i;
                     found = true;
                     return;
                 }
             }
-            found = false   ;
             Toast.makeText(this, "No se encontró", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Ingresa un código", Toast.LENGTH_SHORT).show();
@@ -54,13 +72,23 @@ public class EditarViajes extends AppCompatActivity {
 
     public void cancelarViaje(View view) {
         if(found){
-            viajes.remove(index);
-            Comun.MisViajes = viajes;
-            Toast.makeText(this, "Viaje removido >:)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"entré al found",  Toast.LENGTH_SHORT);
+            API.DELETE_MyTrip(IDaux, usuario.getIDUser(), this, new RegisterSeatCallback() {
+                @Override
+                public void onAnswerCompleted(boolean completado) {
+                    //viajes.remove(index);
+                    Toast.makeText(EditarViajes.this, "Viaje removido >:)", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAnswerError(String errorMessage) {
+                    Toast.makeText(EditarViajes.this, "Morí", Toast.LENGTH_SHORT).show();
+                }
+            });
+            Intent intent = new Intent(this, MisViajes.class);
+            intent.putExtra("usuario", usuario);
             found = false;
             index = 0;
-
-            Intent intent = new Intent(this, MisViajes.class);
             startActivity(intent);
             finish();
         } else {
