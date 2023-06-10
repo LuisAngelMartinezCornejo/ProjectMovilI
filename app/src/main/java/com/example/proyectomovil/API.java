@@ -384,7 +384,7 @@ public class API {
     public static void DELETE_MyTrip(int IDMyTrip, int IDUser, Context context, RegisterSeatCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String requestString = DBCONSTS.URL_DELETE_MY_TRIP;
+        String requestString = "https://g536cb05421bd26-ticketgodb.adb.us-ashburn-1.oraclecloudapps.com/ords/appuser/api/trips/mytrips/drop?IDMYTRIP=" + IDMyTrip + "&IDUSER=" + IDUser;
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("IDMYTRIP", IDMyTrip);

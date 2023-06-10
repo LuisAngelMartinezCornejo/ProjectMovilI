@@ -61,6 +61,7 @@ public class Viaje implements Serializable {
         this.nombreReserva = nombreReserva;
     }
 
+    /*
     @Override
     public String toString()
     {
@@ -70,6 +71,15 @@ public class Viaje implements Serializable {
                 "Dias de estancia:" + this.diasEstancia + "\n" +
                 "Asientos: " + this.asientos + "\n" +
                 "A nombre de: " + this.nombreReserva;
+    }
+     */
+
+    @Override
+    public String toString()
+    {
+        return  "Lugar: " + this.lugar.getCiudad() + "\n" +
+                "Fecha: " + this.fecha + "\n" +
+                "ID: " + this.id;
     }
 
     public int getId() {
