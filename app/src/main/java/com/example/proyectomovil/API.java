@@ -10,17 +10,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyectomovil.Controller.DBCONSTS;
-import com.example.proyectomovil.interfaces.AuthCallback;
-import com.example.proyectomovil.interfaces.VolleyCallback;
+import com.example.proyectomovil.interfaces.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class API {
 
-    private static void GET_User_Auth_private(String phone, String password, VolleyCallback callback, Context context)
-    {
+    private static void GET_User_Auth_private(String phone, String password, VolleyCallback callback, Context context) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String requestString = DBCONSTS.URL_AUTH + phone;
         StringRequest request = new StringRequest(Request.Method.GET, requestString,
@@ -77,4 +77,40 @@ public class API {
         }, context);
     }
 
+    public static void GET_All_Trips(int IDUser, Context context, AllTripsCallback callback)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_ALL_TRIPS + IDUser;
+        StringRequest request = new StringRequest(Request.Method.GET, requestString,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject JSONResponse = new JSONObject(response);
+                            JSONArray jsonArray = JSONResponse.getJSONArray("items");
+
+                            ArrayList<Viaje> misViajes = new ArrayList<>();
+                            for (int i = 0; i < jsonArray.length(); i++)
+                            {
+                                JSONObject objeto = jsonArray.getJSONObject(i);
+                                misViajes.add(new Viaje(
+                                    objeto.getInt("idtrip"),
+                                    objeto.getString("departuredate"),
+                                    objeto.getString("city"),
+                                    objeto.getString("transporttype")));
+                            }
+                            callback.onAnswerCompleted(misViajes);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            callback.onAnswerError(e.getMessage());
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                });
+        queue.add(request);
+
+    }
 }
