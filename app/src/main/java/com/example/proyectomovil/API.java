@@ -308,4 +308,114 @@ public class API {
             queue.add(request);
         }
     }
+
+    public static void POST_Register_Seat(int IDTrip, int seatNumber, Context context, RegisterSeatCallback callback)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_REGISTER_SEAT;
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("SEATNUMBER", seatNumber);
+            requestObject.put("IDTRIP", IDTrip);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestString, requestObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                })
+        {
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
+            {
+                int statusCode = response.statusCode;
+                if (statusCode == 200)
+                    callback.onAnswerCompleted(true);
+                else
+                    callback.onAnswerError("Operation failed");
+                return null;
+            }
+        };
+        queue.add(request);
+    }
+
+    public static void DELETE_Seat_Trip(int IDTrip, int seatNumber, Context context, RegisterSeatCallback callback)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_DELETE_SEAT + seatNumber;
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("IDTRIP", IDTrip);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, requestString, requestObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                })
+        {
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
+            {
+                int statusCode = response.statusCode;
+                if (statusCode == 200)
+                    callback.onAnswerCompleted(true);
+                else
+                    callback.onAnswerError("Operation failed");
+                return null;
+            }
+        };
+        queue.add(request);
+    }
+
+    public static void DELETE_MyTrip(int IDMyTrip, int IDUser, Context context, RegisterSeatCallback callback)
+    {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String requestString = DBCONSTS.URL_DELETE_MY_TRIP;
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("IDMYTRIP", IDMyTrip);
+            requestObject.put("IDUSER", IDUser);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, requestString, requestObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {}
+                })
+        {
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
+            {
+                int statusCode = response.statusCode;
+                if (statusCode == 200)
+                    callback.onAnswerCompleted(true);
+                else
+                    callback.onAnswerError("Operation failed");
+                return null;
+            }
+        };
+        queue.add(request);
+    }
 }
