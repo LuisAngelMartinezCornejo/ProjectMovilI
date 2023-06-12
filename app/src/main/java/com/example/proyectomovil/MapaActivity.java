@@ -1,5 +1,7 @@
 package com.example.proyectomovil;
 
+import static com.example.proyectomovil.BuildConfig.API_ROUTE_GOOGLE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -165,7 +167,7 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void traceRoute(LatLng fromLatLng, LatLng toLatLng) throws IOException {
         List<List<LatLng>> path = new ArrayList<>();
 
-        String urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=" + fromLatLng.latitude + "," + fromLatLng.longitude + "&destination=" + toLatLng.latitude + "," + toLatLng.longitude + "&key=" + getString(R.string.api);
+        String urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=" + fromLatLng.latitude + "," + fromLatLng.longitude + "&destination=" + toLatLng.latitude + "," + toLatLng.longitude + "&key=" +  API_ROUTE_GOOGLE ;
 
         StringRequest directionsRequest = new StringRequest(Request.Method.GET, urlDirections,
                 new Response.Listener<String>() {
