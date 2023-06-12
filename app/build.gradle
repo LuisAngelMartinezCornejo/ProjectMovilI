@@ -5,17 +5,23 @@ plugins {
 }
 
 
+def apiKeyPropertiesFile = rootProject.file("local.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
     compileSdk 32
 
     defaultConfig {
         applicationId "com.example.proyectomovil"
-        minSdk 21
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_ROUTE", apiKeyProperties['API_ROUTE'])
 
     }
 
@@ -36,9 +42,10 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.libraries.places:places:3.1.0'

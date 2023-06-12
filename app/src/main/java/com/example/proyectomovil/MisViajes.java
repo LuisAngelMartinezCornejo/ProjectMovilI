@@ -32,7 +32,6 @@ MisViajes extends AppCompatActivity {
         setContentView(R.layout.activity_mis_viajes);
 
         rvMisViajes = (RecyclerView) findViewById(R.id.rvMisViajes);
-        rvMisViajes.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
         viajes = Comun.MisViajes;
 

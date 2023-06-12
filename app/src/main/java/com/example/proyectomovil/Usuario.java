@@ -4,6 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Usuario implements Serializable {
+    private int IDUser;
+
+    public int getIDUser() {
+        return IDUser;
+    }
+
+    public void setIDUser(int IDUser) {
+        this.IDUser = IDUser;
+    }
+
     private String nombre;
     private String correo;
     private long telefono;
@@ -12,8 +22,6 @@ public class Usuario implements Serializable {
 
     public Viaje viajesUsuario = new Viaje();
     public int contadorViajes = 0;
-
-
 
     public Usuario(String nombre, String correo, long telefono, String direccion, String contraseña) {
         this.nombre = nombre;

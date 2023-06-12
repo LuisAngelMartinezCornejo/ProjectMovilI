@@ -20,6 +20,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectomovil.interfaces.AuthCallback;
+import com.example.proyectomovil.interfaces.RegisterUserCallback;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -60,15 +63,28 @@ public class ActivityRegister extends AppCompatActivity {
             usuario.setTelefono(Long.parseLong(telefono));
             usuario.setContraseña(contrasena);
 
-            APIArchivo API = new APIArchivo(this);
-            usuario = API.POST_Usuario(usuario, this);
+            API.POST_Register_User(nombre, telefono, contrasena, this, new RegisterUserCallback() {
+                @Override
+                public void onAnswerCompleted(boolean resultado) {
+                    if (resultado)
+                    {
+                        SetPreferences(usuario);
 
-            SetPreferences(usuario);
+                        Intent intent = new Intent(ActivityRegister.this, MenuPrincipal.class);
+                        intent.putExtra("usuario", usuario);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
 
-            Intent intent = new Intent(ActivityRegister.this, MenuPrincipal.class);
-            intent.putExtra("usuario", usuario);
-            startActivity(intent);
-            finish();
+                @Override
+                public void onAnswerError(String errorMessage) {
+
+                }
+            });
+
+            //APIArchivo API = new APIArchivo(this);
+            //usuario = API.POST_Usuario(usuario, this);
         }
     }
 

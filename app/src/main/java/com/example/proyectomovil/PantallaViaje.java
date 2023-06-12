@@ -1,34 +1,39 @@
 package com.example.proyectomovil;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Button;
 import java.io.Serializable;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class PantallaViaje extends AppCompatActivity {
 
-    Usuario user;
-    ArrayList<Viaje> viajes  = new ArrayList<>();
     Viaje viaje;
-
+    Viaje auxViaje;
+    Date fechaViaje;
     TextView destino, id, transporte, cantidadDias, cantidadBoletos, fecha;
 
-    Button btn ;
+    private Usuario user = new Usuario();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_viaje);
 
-        user = Comun.user;
+        user = (Usuario) getIntent().getSerializableExtra("user");
         viaje  = user.getViajesUsuario();
 
         destino = (TextView) findViewById(R.id.txtDestinoInfo);
@@ -39,21 +44,54 @@ public class PantallaViaje extends AppCompatActivity {
         fecha = (TextView) findViewById(R.id.txtFechaInfo);
 
         destino.setText(String.valueOf(viaje.getLugar().getCiudad()));
-        id.setText(String.valueOf(viaje.getId()));
         transporte.setText(viaje.getTransporte().getTipo());
-        cantidadDias.setText(String.valueOf(viaje.getDiasEstancia()));
-        cantidadBoletos.setText(String.valueOf(viaje.getAsientos()));
-        fecha.setText(viaje.getFecha().toString());
+        id.setText(String.valueOf(viaje.getId()));
+    }
+
+    public void fecha (View view) {
+        Calendar horarioHoy = Calendar.getInstance();
+
+        int anioActual = horarioHoy.get(Calendar.YEAR);
+        int mesActual = horarioHoy.get(Calendar.MONTH);
+        int diaActual = horarioHoy.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(PantallaViaje.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                String fechaSeleccionada = i2 + " / " + (i1 + 1) + " / " + i;
+
+                Calendar auxCalendar = Calendar.getInstance();
+                auxCalendar.set(Calendar.YEAR, i);
+                auxCalendar.set(Calendar.MONTH, i1);
+                auxCalendar.set(Calendar.DAY_OF_MONTH, i2);
+
+                fechaViaje = auxCalendar.getTime();
+                fecha.setText(fechaSeleccionada);
+            }
+        }, anioActual, mesActual, diaActual);
+        datePickerDialog.setTitle("Fecha de cita");
+        datePickerDialog.show();
     }
 
     public void siguiente(View view){
-        Intent intent = new Intent(this, SeleccionAsientos.class);
-        startActivity(intent);
-        finish();
-        btn = findViewById(R.id.btnSiguiente);
-        btn.setOnClickListener(View->{
-            Intent i =  new Intent(this, SeleccionAsientos.class);
-            startActivity(i);
-        });
+        if (!transporte.getText().toString().isEmpty() && !cantidadDias.getText().toString().isEmpty() && !cantidadBoletos.getText().toString().isEmpty() && !fecha.getText().toString().isEmpty()) {
+
+            auxViaje = new Viaje(
+                    viaje.getId(),
+                    viaje.getLugar(),
+                    viaje.getTransporte(),
+                    fechaViaje,
+                    Integer.parseInt(cantidadDias.getText().toString()),
+                    "1",
+                    viaje.getNombreReserva());
+
+
+            Intent intent = new Intent(this, SeleccionAsientos.class);
+            intent.putExtra("viaje", auxViaje);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Llena todos los campos.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
