@@ -1,5 +1,7 @@
 package com.example.proyectomovil;
 
+import static com.example.proyectomovil.Controller.DBCONSTS.baseRoute;
+
 import android.content.Context;
 import android.widget.Toast;
 
@@ -211,9 +213,11 @@ public class API {
                                 {
                                     JSONObject objeto = jsonArray.getJSONObject(i);
                                     misViajes.add(new Viaje(
-                                            objeto.getInt("idmytrip"),
+                                            objeto.getInt("idtrip"),
                                             objeto.getString("city"),
-                                            objeto.getString("mydeparturedate")));
+                                            objeto.getInt("idmytrip"),
+                                            objeto.getString("mydeparturedate"),
+                                            objeto.getString("seatings")));
                                 }
                                 callback.onAnswerCompleted(misViajes);
                             } catch (JSONException e) {
@@ -315,9 +319,8 @@ public class API {
         String requestString = DBCONSTS.URL_REGISTER_SEAT;
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("SEATNUMBER", seatNumber);
             requestObject.put("IDTRIP", IDTrip);
-
+            requestObject.put("SEATNUMBER", seatNumber);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -349,11 +352,11 @@ public class API {
     public static void DELETE_Seat_Trip(int IDTrip, int seatNumber, Context context, RegisterSeatCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String requestString = DBCONSTS.URL_DELETE_SEAT + seatNumber;
+        String requestString = baseRoute + "/api/seats/drop?IDTRIP=" + IDTrip + "&IDSEAT=" + seatNumber;
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("IDTRIP", IDTrip);
-
+            requestObject.put("IDSEAT", seatNumber);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -385,7 +388,7 @@ public class API {
     public static void DELETE_MyTrip(int IDMyTrip, int IDUser, Context context, RegisterSeatCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String requestString = DBCONSTS.URL_DELETE_MY_TRIP;
+        String requestString = baseRoute + "/api/trips/mytrips/drop?IDMYTRIP=" + IDMyTrip + "&IDUSER=" + IDUser;
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("IDMYTRIP", IDMyTrip);
@@ -417,5 +420,39 @@ public class API {
             }
         };
         queue.add(request);
+    }
+
+    public static void GET_Seats(int IDTrip, Context context, SeatsCallback callback)
+    {
+        {
+            RequestQueue queue = Volley.newRequestQueue(context);
+            String requestString = DBCONSTS.URL_SEATS + IDTrip;
+            StringRequest request = new StringRequest(Request.Method.GET, requestString,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject JSONResponse = new JSONObject(response);
+                                JSONArray jsonArray = JSONResponse.getJSONArray("items");
+
+                                int[] asientos = new int[jsonArray.length()];
+                                for (int i = 0; i < jsonArray.length();i++)
+                                {
+                                    JSONObject objeto = jsonArray.getJSONObject(i);
+                                    asientos[i] = objeto.getInt("seatnumber");
+                                }
+                                callback.onAnswerCompleted(asientos);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                callback.onAnswerError(e.getMessage());
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {}
+                    });
+            queue.add(request);
+        }
     }
 }

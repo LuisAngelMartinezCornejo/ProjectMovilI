@@ -26,7 +26,7 @@ public class EditarPerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
+        user = (Usuario) getIntent().getSerializableExtra("usuario");
 
         saludo = (TextView) findViewById(R.id.txtSaludoPerfil2);
         edtNombre = (EditText) findViewById(R.id.edtNombre);
@@ -53,7 +53,7 @@ public class EditarPerfil extends AppCompatActivity {
                 if (resultado)
                 {
                     Intent intent = new Intent(EditarPerfil.this, MiPerfil.class);
-                    intent.putExtra("user", user);
+                    intent.putExtra("usuario", user);
                     startActivity(intent);
                     finish();
                 }

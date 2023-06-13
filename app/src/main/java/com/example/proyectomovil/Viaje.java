@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Viaje implements Serializable {
+    private static final long serialVersionUID = 123456789L;
+    private int idTripAux;
     private int id;
     private Lugar lugar;
     private Transporte transporte;
@@ -29,6 +31,22 @@ public class Viaje implements Serializable {
         Lugar lugarAux = new Lugar();
         lugarAux.setCiudad(ciudad);
         this.lugar = lugarAux;
+    }
+
+    public Viaje (int idTrip, String ciudad, int id, String fecha, String asientos) {
+        this.id = id;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        try {
+            this.fecha = dateFormat.parse(fecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Lugar lugarAux = new Lugar();
+        lugarAux.setCiudad(ciudad);
+        this.lugar = lugarAux;
+        this.asientos = asientos;
+        this.idTripAux = idTrip;
     }
 
     public Viaje(int id, String fecha, String ciudad, String transporte)
@@ -61,6 +79,7 @@ public class Viaje implements Serializable {
         this.nombreReserva = nombreReserva;
     }
 
+    /*
     @Override
     public String toString()
     {
@@ -70,6 +89,15 @@ public class Viaje implements Serializable {
                 "Dias de estancia:" + this.diasEstancia + "\n" +
                 "Asientos: " + this.asientos + "\n" +
                 "A nombre de: " + this.nombreReserva;
+    }
+     */
+
+    @Override
+    public String toString()
+    {
+        return  "Lugar: " + this.lugar.getCiudad() + "\n" +
+                "Fecha: " + this.fecha + "\n" +
+                "ID: " + this.id;
     }
 
     public int getId() {
@@ -126,5 +154,13 @@ public class Viaje implements Serializable {
 
     public void setNombreReserva(String nombreReserva) {
         this.nombreReserva = nombreReserva;
+    }
+
+    public int getIdTripAux() {
+        return idTripAux;
+    }
+
+    public void setIdTripAux(int idTripAux) {
+        this.idTripAux = idTripAux;
     }
 }

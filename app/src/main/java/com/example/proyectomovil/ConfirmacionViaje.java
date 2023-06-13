@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class ConfirmacionViaje extends AppCompatActivity {
@@ -45,8 +46,7 @@ public class ConfirmacionViaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacion_viaje);
 
-        intent = getIntent();
-        viaje = (Viaje) intent.getSerializableExtra("viaje");
+        viaje = (Viaje) getIntent().getSerializableExtra("viaje");
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         idViaje = (TextView) findViewById(R.id.txtIDViaje);
@@ -67,23 +67,17 @@ public class ConfirmacionViaje extends AppCompatActivity {
 
         String originalDateString = viaje.getFecha().toString();
 
-        SimpleDateFormat originalFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-        originalFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-
+        SimpleDateFormat originalFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
         SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        Date originalDate = null;
-
         try {
-            originalDate = originalFormat.parse(originalDateString);
+            Date originalDate = originalFormat.parse(originalDateString);
+            assert originalDate != null;
+            targetDateString = targetFormat.format(originalDate);
+            fecha.setText(targetDateString);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        assert originalDate != null;
-        targetDateString = targetFormat.format(originalDate);
-        System.out.println(targetDateString);
-
-        fecha.setText(targetDateString);
     }
 
     private void setPendingIntentInicio() {

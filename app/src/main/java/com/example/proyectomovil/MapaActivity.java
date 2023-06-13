@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -57,16 +58,21 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location currentLocation;
     private FusedLocationProviderClient fusedLocationClient;
     Address address;
+    Intent intent;
+    Viaje viaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        intent = getIntent();
+        viaje = (Viaje) getIntent().getSerializableExtra("viaje");
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getLastLocation();
 
         geocoder = new Geocoder(this, Locale.getDefault());
-        String addressString = "Puerta de Hierro, Jal.";
+        String addressString = viaje.getLugar().getCiudad();
 
         String res = getApi();
         convertAddressToLocation(addressString);
@@ -111,9 +117,6 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
             e.printStackTrace();
         }
     }
-
-
-
 
     private void getLastLocation() {
 
@@ -167,7 +170,7 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void traceRoute(LatLng fromLatLng, LatLng toLatLng) throws IOException {
         List<List<LatLng>> path = new ArrayList<>();
 
-        String urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=" + fromLatLng.latitude + "," + fromLatLng.longitude + "&destination=" + toLatLng.latitude + "," + toLatLng.longitude + "&key=" +  API_ROUTE_GOOGLE ;
+        String urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=" + fromLatLng.latitude + "," + fromLatLng.longitude + "&destination=" + toLatLng.latitude + "," + toLatLng.longitude + "&key=" + API_ROUTE_GOOGLE;
 
         StringRequest directionsRequest = new StringRequest(Request.Method.GET, urlDirections,
                 new Response.Listener<String>() {

@@ -21,7 +21,7 @@ public class MiPerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
+        user = (Usuario) getIntent().getSerializableExtra("usuario");
 
         saludo = (TextView) findViewById(R.id.txtSaludoPerfil);
         nombre = (TextView) findViewById(R.id.txtNombre);
@@ -38,7 +38,7 @@ public class MiPerfil extends AppCompatActivity {
 
     public void editarInformacion(View view){
         Intent intent = new Intent(this, EditarPerfil.class);
-        intent.putExtra("user", user);
+        intent.putExtra("usuario", user);
         startActivity(intent);
         finish();
     }

@@ -83,7 +83,7 @@ public class PantallaViaje extends AppCompatActivity {
                     viaje.getTransporte(),
                     fechaViaje,
                     Integer.parseInt(cantidadDias.getText().toString()),
-                    "1",
+                    cantidadBoletos.toString(),
                     viaje.getNombreReserva());
 
 
