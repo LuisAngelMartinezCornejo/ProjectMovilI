@@ -25,16 +25,17 @@ public class PantallaViaje extends AppCompatActivity {
     Viaje auxViaje;
     Date fechaViaje;
     TextView destino, id, transporte, cantidadDias, cantidadBoletos, fecha;
-
-    private Usuario user = new Usuario();
+    private Intent intent;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_viaje);
 
-        user = (Usuario) getIntent().getSerializableExtra("user");
-        viaje  = user.getViajesUsuario();
+        intent = getIntent();
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+        viaje  = usuario.getViajesUsuario();
 
         destino = (TextView) findViewById(R.id.txtDestinoInfo);
         id = (TextView) findViewById(R.id.txtIDInfo);
@@ -88,6 +89,7 @@ public class PantallaViaje extends AppCompatActivity {
 
             Intent intent = new Intent(this, SeleccionAsientos.class);
             intent.putExtra("viaje", auxViaje);
+            intent.putExtra("usuario", usuario);
             startActivity(intent);
             finish();
         } else {

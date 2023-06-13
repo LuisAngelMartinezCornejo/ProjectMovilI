@@ -17,9 +17,18 @@ public class Viaje implements Serializable {
     public Viaje () {
     }
 
-    public Viaje (Lugar lugar, Date fecha) {
-        this.lugar = lugar;
-        this.fecha = fecha;
+    public Viaje (int id, String ciudad, String fecha) {
+        this.id = id;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        try {
+            this.fecha = dateFormat.parse(fecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Lugar lugarAux = new Lugar();
+        lugarAux.setCiudad(ciudad);
+        this.lugar = lugarAux;
     }
 
     public Viaje(int id, String fecha, String ciudad, String transporte)

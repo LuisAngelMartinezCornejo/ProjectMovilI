@@ -6,12 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.proyectomovil.interfaces.MyTripsCallback;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,6 +24,8 @@ import java.util.Date;
 public class
 MisViajes extends AppCompatActivity {
 
+    private Usuario usuario;
+    private Intent intent;
     ArrayList<Viaje> viajes = new ArrayList<>();
     RecyclerView rvMisViajes;
     TextView txtDestino, txtIDViaje, txtFecha;
@@ -31,14 +36,27 @@ MisViajes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_viajes);
 
-        rvMisViajes = (RecyclerView) findViewById(R.id.rvMisViajes);
+        intent = getIntent();
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
-        viajes = Comun.MisViajes;
+        rvMisViajes = (RecyclerView) findViewById(R.id.rvMisViajes);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rvMisViajes.setLayoutManager(llm);
         aMv = new AdaptadorViaje();
         rvMisViajes.setAdapter(aMv);
+        API.GET_My_Trips(usuario.getIDUser(), this, new MyTripsCallback() {
+            @Override
+            public void onAnswerCompleted(ArrayList<Viaje> misViajes) {
+                viajes.addAll(misViajes);
+                aMv.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onAnswerError(String errorMessage) {
+                Toast.makeText(MisViajes.this, errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private class AdaptadorViaje extends RecyclerView.Adapter<AdaptadorViaje.AdaptadorViajeHolder> {
@@ -56,7 +74,7 @@ MisViajes extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return Comun.MisViajes.size();
+            return viajes.size();
         }
 
         class AdaptadorViajeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -71,31 +89,27 @@ MisViajes extends AppCompatActivity {
 
             public void imprimir(int position){
                 try {
-                    txtDestino.setText(viajes.get(position).getLugar().getCiudad());
                     txtIDViaje.setText(String.valueOf(viajes.get(position).getId()));
+                    txtDestino.setText(viajes.get(position).getLugar().getCiudad());
                     DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
                     txtFecha.setText(String.valueOf(formatoFecha.format(viajes.get(position).getFecha())));
                 } catch (Exception e) {
-                    Log.e("Error eric", e.toString());
+                    Log.e("Error Eric", e.toString());
                 }
 
             }
             Viaje v;
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MisViajes.this,MapaActivity.class);
+                Intent i = new Intent(MisViajes.this, MapaActivity.class);
                 v = viajes.get(getLayoutPosition());
-                //Toast.makeText(NuevoViaje.this,"dsfa",Toast.LENGTH_LONG).show();
-
-                Comun.user.setViajesUsuario(v);
+                usuario.setViajesUsuario(v);
+                i.putExtra("usuario", usuario);
                 startActivity(i);
                 finish();
             }
         }
     }
-
-
-
 
     public void CancelarViaje(View view){
         Intent intent = new Intent(this, EditarViajes.class);
