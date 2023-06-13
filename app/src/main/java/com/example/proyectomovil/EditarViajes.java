@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +26,7 @@ public class EditarViajes extends AppCompatActivity {
     int datoABuscar;
     boolean found = false;
     int index = 0;
+    Viaje auxViaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class EditarViajes extends AppCompatActivity {
 
             for (int i = 0; i < viajes.size(); i++){
                 if(viajes.get(i).getId() == datoABuscar){
+                    auxViaje = viajes.get(i);
                     IDaux = viajes.get(i).getId();
                     showViaje.setText(viajes.get(i).toString());
                     index = i;
@@ -71,7 +72,6 @@ public class EditarViajes extends AppCompatActivity {
 
 
     public void cancelarViaje(View view) {
-        Toast.makeText(this,"entré al found",  Toast.LENGTH_SHORT);
         if(found){
             API.DELETE_MyTrip(IDaux, usuario.getIDUser(), this, new RegisterSeatCallback() {
                 @Override
@@ -82,10 +82,32 @@ public class EditarViajes extends AppCompatActivity {
                 public void onAnswerError(String errorMessage) {
                 }
             });
+
+            String[] asientos = auxViaje.getAsientos().split(" ");
+            int idAsientos[] = new int[asientos.length];
+
+            for (int i = 0; i < asientos.length; i++) {
+                idAsientos[i] = Integer.parseInt(asientos[i]);
+
+                API.DELETE_Seat_Trip(auxViaje.getIdTripAux(), idAsientos[i], this, new RegisterSeatCallback() {
+                    @Override
+                    public void onAnswerCompleted(boolean completado) {
+
+                    }
+
+                    @Override
+                    public void onAnswerError(String errorMessage) {
+
+                    }
+                });
+            }
+
+
             Intent intent = new Intent(this, MisViajes.class);
             intent.putExtra("usuario", usuario);
             found = false;
             index = 0;
+            auxViaje = null;
             startActivity(intent);
             finish();
         } else {

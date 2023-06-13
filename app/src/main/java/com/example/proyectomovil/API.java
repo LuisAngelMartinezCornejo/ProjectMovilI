@@ -1,5 +1,7 @@
 package com.example.proyectomovil;
 
+import static com.example.proyectomovil.Controller.DBCONSTS.baseRoute;
+
 import android.content.Context;
 import android.widget.Toast;
 
@@ -211,9 +213,11 @@ public class API {
                                 {
                                     JSONObject objeto = jsonArray.getJSONObject(i);
                                     misViajes.add(new Viaje(
-                                            objeto.getInt("idmytrip"),
+                                            objeto.getInt("idtrip"),
                                             objeto.getString("city"),
-                                            objeto.getString("mydeparturedate")));
+                                            objeto.getInt("idmytrip"),
+                                            objeto.getString("mydeparturedate"),
+                                            objeto.getString("seatings")));
                                 }
                                 callback.onAnswerCompleted(misViajes);
                             } catch (JSONException e) {
@@ -348,11 +352,11 @@ public class API {
     public static void DELETE_Seat_Trip(int IDTrip, int seatNumber, Context context, RegisterSeatCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String requestString = DBCONSTS.URL_DELETE_SEAT + seatNumber;
+        String requestString = baseRoute + "/api/seats/drop?IDTRIP=" + IDTrip + "&IDSEAT=" + seatNumber;
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("IDTRIP", IDTrip);
-
+            requestObject.put("IDSEAT", seatNumber);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -384,7 +388,7 @@ public class API {
     public static void DELETE_MyTrip(int IDMyTrip, int IDUser, Context context, RegisterSeatCallback callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String requestString = "https://g536cb05421bd26-ticketgodb.adb.us-ashburn-1.oraclecloudapps.com/ords/appuser/api/trips/mytrips/drop?IDMYTRIP=" + IDMyTrip + "&IDUSER=" + IDUser;
+        String requestString = baseRoute + "/api/trips/mytrips/drop?IDMYTRIP=" + IDMyTrip + "&IDUSER=" + IDUser;
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("IDMYTRIP", IDMyTrip);

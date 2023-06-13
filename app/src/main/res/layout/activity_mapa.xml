@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@color/purple_200"
+    android:background="@color/blue2"
     tools:context=".MapaActivity">
 
     <LinearLayout

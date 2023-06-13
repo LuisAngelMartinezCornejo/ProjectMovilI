@@ -68,7 +68,6 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
         //Toast.makeText(this, "Comienza video", Toast.LENGTH_LONG).show();
         videoView.setMediaController(mediaController);
 
-
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
         tx = findViewById(R.id.welcome_message);
@@ -191,7 +190,7 @@ public class MenuPrincipal extends AppCompatActivity implements NavigationView.O
                 return true;
             case R.id.nav_perfil:
                 Intent ip = new Intent(this,MiPerfil.class);
-                ip.putExtra("user", usuario);
+                ip.putExtra("usuario", usuario);
                 startActivity(ip);
                 return true;
             case R.id.nav_salir:

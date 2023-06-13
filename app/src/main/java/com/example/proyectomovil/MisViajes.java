@@ -104,6 +104,7 @@ MisViajes extends AppCompatActivity {
                 Intent i = new Intent(MisViajes.this, MapaActivity.class);
                 v = viajes.get(getLayoutPosition());
                 usuario.setViajesUsuario(v);
+                i.putExtra("viaje", v);
                 i.putExtra("usuario", usuario);
                 startActivity(i);
                 finish();

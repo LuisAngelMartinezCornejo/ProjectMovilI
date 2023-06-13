@@ -47,6 +47,8 @@ public class NuevoViaje extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_viaje);
 
+        viajesChido.clear();
+
         intent = getIntent();
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
